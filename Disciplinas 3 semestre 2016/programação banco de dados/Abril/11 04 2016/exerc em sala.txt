@@ -1,0 +1,35 @@
+criar um bloco pl/sql para atualizar os preços conforma segue:
+produto com codigo inferior a 2000 e valor inferior a R$300,00: acrescentar 10% ao valor atual
+produto com codigo superior a 2000 e acrescentar 20% ao valor atual
+
+
+create table produto(
+codigo number(10) primary key,
+valor number(9,2));
+
+insert into produto values(1000,500.00);
+insert into produto values(1010,1000.00);
+insert into produto values(1020,200.00);
+insert into produto values(1030,100.00);
+insert into produto values(1040,200.00);
+insert into produto values(2020,200.00);
+insert into produto values(2030,400.00);
+insert into produto values(2040,500.00);
+
+
+declare
+	V_CAso number;
+	cursor c_produto is
+		select codigo, valor from produto;
+begin 
+	for v_produto in c_produto
+	loop
+		v_caso := case
+		when v_produto.valor<300.00 and v_produto.codigo<2000 then v_produto.valor*1.10
+		when v_produto.codigo>2000 then v_produto.valor*1.20
+		when v_produto.valor>300.00 and v_produto.codigo<2000 then v_produto.valor
+		end;
+		update produto set valor= V_caso where codigo = v_produto.codigo;
+	end loop;
+end;
+/

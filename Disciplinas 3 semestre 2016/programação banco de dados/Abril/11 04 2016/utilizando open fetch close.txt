@@ -1,0 +1,43 @@
+create table cliente(
+codigo number(15) primary key,
+nome varchar2(30));
+
+insert into cliente values(1,'moises');
+insert into cliente values(2,'joao');
+insert into cliente values(3,'ana');
+insert into cliente values(4,'maria');
+insert into cliente values(5,'felipe');
+
+set serveroutput on
+
+declare 
+	cursor c_cliente is
+		select codigo, nome
+			from cliente;
+	v_cliente c_cliente%rowtype;
+begin 
+	open c_cliente;
+	loop
+		fetch c_cliente
+			into v_cliente;
+		exit when c_cliente%notfound;
+		dbms_output.put_line('cliente:'||v_cliente.nome||' - codigo:'||v_cliente.codigo);
+	end loop;
+	close c_cliente;
+end;
+/
+
+
+declare
+	cursor c_cliente is
+		select codigo.nome
+		from cliente;
+begin
+	for v_cliente in c_cliente
+	loop
+		dbms_output.put_line ('cliente:'||v_cliente.nome);
+	end loop;
+end;
+/
+
+

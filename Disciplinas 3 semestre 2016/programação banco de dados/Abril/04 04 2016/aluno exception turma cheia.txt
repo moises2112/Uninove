@@ -1,0 +1,21 @@
+create table aluno (
+turma varchar2(5),
+ra number(10) primary key,
+nome varchar2(30));
+
+DECLARE
+	v_ra	     aluno.ra%type:=&ra;
+	v_nome	     aluno.nome%type:='&nome';
+	v_turma      aluno.turma%type:='&turma';
+	v_conta      number(2);
+	conta_aluno  exception;
+BEGIN
+	select count(ra) into v_conta from aluno;
+	if v_conta=10 then raise conta_aluno;
+	else insert into aluno values(v_turma,v_ra,v_nome);
+	end if;
+EXCEPTION 
+	when conta_aluno then dbms_output.put_line('turma cheia');
+	end;
+	/
+

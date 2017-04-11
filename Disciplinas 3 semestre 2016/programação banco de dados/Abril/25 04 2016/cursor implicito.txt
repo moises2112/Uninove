@@ -1,0 +1,21 @@
+create table cliente(
+codigo number(5) primary key,
+nome varchar2(50));
+
+insert into cliente values (1,'moises');
+insert into cliente values (2,'matheus');
+insert into cliente values (3,'jorge');
+insert into cliente values (4,'joão');
+
+
+DECLARE 
+	v_codigo cliente.codigo%type:=&codigo;
+	v_nome   cliente.nome%type:='&nome';
+BEGIN
+	update cliente set nome=v_nome
+	where codigo=v_codigo;
+	if sql%notfound then
+		dbms_output.put_line('Não ocorre alteração');
+	end if;
+	commit;
+end;

@@ -1,0 +1,15 @@
+Cursos explicitos
+
+Utilizando: open, fetch e close.
+
+open: abre o cursor
+fetch:disponibiliza a linha corrente e posiciona na próxima linha do cursor. As linhas armazenadas no curso somente poderãp ser processadas quando seu conteúdo for transferido para variáveis que possam ser manupuladas no pl/sql;
+close:fecha o cursor
+
+para cada cursor, quatro atributos podem ser verificados e seus valores podem ser alterados a cada execução de um comando fetch.
+
+nome_do_curso%found:     retorna tru caso o fetch consiga retornar alguma linha e false caso contrario.
+nome_do_cursor%notfound: retorna false caso o petch retorna alguma linha e true caso contrário.
+nome_do_cursor%rowcount: retorna o numero de linhas já processadas pelo cursor
+nome_do_cursor%isopen: retorna true caso o cursor esteja aberto e false caso contrário.
+

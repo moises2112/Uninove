@@ -1,0 +1,88 @@
+CREATE TABLE funcionario(
+matricula number(4) constraint fun_mat_pk primary key,
+nome varchar2(20) constraint fun_nome_nn not null,
+salario number(8,2),
+dt_admissao date constraint fun_dt_nn not null,
+comissao char(1) constraint fun_com_nn not null);
+
+insert into funcionario values(1,'Claudia',5000,'10/10/2010','A');
+
+insert into funcionario values(2,'Silvio',5680,'07/12/2000','B');
+
+insert into funcionario values(3,'Vanessa',4598,'23/08/2011','A');
+
+insert into funcionario values(4,'Ricardo',2500,'01/04/2000','A');
+
+insert into funcionario values(5,'Moises',null,'01/04/2000','A');
+
+update funcionario
+set comissao='C'
+WHERE matricula=4;
+
+select * from funcionario;
+
+select nome, salario from funcionario;
+
+
+select nome, salario from funcionario where salario>=5000;
+
+
+
+
+select * from funcionario where matricula >=2 order by salario, nome;
+
+select matricula, nome from funcionario
+where salario not between 4000 and 7000 and dt_admissao='01/04/2000';
+
+select matricula, nome from funcionario
+where salario is null;
+
+select nome, salario, matricula from funcionario
+where  dt_admissao='07/12/2000' and nome>'Ricardo';
+
+select nome, salario, matricula from funcionario
+where  salario>=1000 and (matricula=4 or matricula=2);
+
+select nome, salario, salario*280/100 comissao from funcionario 
+where salario=2500 and salario*280/100>200 order by salario*280/100;
+
+select nome, salario, (salario+100)*12 Bonus from funcionario 
+where matricula = 1;
+
+select nome, dt_admissao from funcionario
+where matricula > 1 and comissao in ('A','B');
+
+select * from funcionario where matricula !=1 and comissao not in ('A');
+
+select * from funcionario where nome like 'V%';
+
+select * from funcionario where dt_admissao like '%/10/10';
+
+select * from funcionario where nome like 'S____o';
+
+select * from funcionario where nome like '_i%o';
+
+select nome, salario, salario/1.3, round(salario/1.3,2) from funcionario
+where matricula>2;
+
+select nome, salario, salario/1.3, trunc(salario/1.3,2) from funcionario
+where matricula>2;
+
+select nome, salario, matricula from funcionario
+where  mod(matricula,2)=0;
+
+alter table funcionario drop column comissao;
+
+alter table funcionario add comissao number(6,2);
+
+update funcionario set comissao=case
+when matricula=1 or matricula=3 then 1
+when matricula=2 then 2
+when matricula=4 then null
+end;
+
+select nome, salario, NVL(comissao,0) PORCENTAGEM, salario* NVL(comissao,0)/100 ComissAo from funcionario where salario>10;
+
+
+
+

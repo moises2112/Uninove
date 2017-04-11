@@ -1,0 +1,21 @@
+Cursores implicitos
+
+Cursores explicitos são utilizados para processar instruções sql que retornam mais de uma linha
+todas as instruções sql são executadas dentro de uma área de contexto e, por isso, tem um cursor (conhecido como cursor sql) que aponta para esta área.
+A pl/sql implicitamente abre o cursor sql, processa a instrução sql e fecha o cursor.
+O cursor implicito é utilizado para processar instruções (select... into, insert, update e delete).
+Os cursores implicitos esperam que apenas uma linha seja retornada exceçoes como no_data_found ou too_many_rows devem ser observadas:
+
+Exemplo:
+
+	DECLARE 
+		v_codigo cliente.codigo%type:=&codigo;
+		v_nome   cliente.nome%type:='&nome';
+	BEGIN
+		update cliente set nome=v_nome
+		where codigo=v_codigo;
+		if sql%notfound then
+			dbms_output.put_line('Não ocorre alteração');
+		end if;
+		commit;
+	end;

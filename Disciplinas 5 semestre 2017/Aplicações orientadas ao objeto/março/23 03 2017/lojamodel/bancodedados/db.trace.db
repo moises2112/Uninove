@@ -1,0 +1,508 @@
+03-19 20:43:30 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Parameter "#4" is not set; SQL statement:
+insert into contatos (nome,email,endereco,dataNascimento) values (?,?,?,?) [90012-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.expression.Parameter.checkSet(Parameter.java:81)
+	at org.h2.command.Prepared.checkParameters(Prepared.java:165)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:78)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcPreparedStatement.execute(JdbcPreparedStatement.java:199)
+	at br.com.lojamodel.dao.impl.ContatoDAO.create(ContatoDAO.java:41)
+	at br.com.lojamodel.RunApp.main(RunApp.java:39)
+03-19 21:27:21 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement ")"; SQL statement:
+) [42000-176]
+03-19 21:27:40 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DESC[*] CONTATOS "; expected "DELETE, DROP, DECLARE, DEALLOCATE, {"; SQL statement:
+desc contatos [42001-176]
+03-19 21:27:57 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DESC[*] * CONTATOS "; expected "DELETE, DROP, DECLARE, DEALLOCATE, {"; SQL statement:
+desc * contatos [42001-176]
+03-19 21:28:20 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DESC[*] * FROM CONTATOS "; expected "DELETE, DROP, DECLARE, DEALLOCATE, {"; SQL statement:
+desc * from contatos [42001-176]
+03-19 21:29:31 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DESC[*] CONTATOS "; expected "DELETE, DROP, DECLARE, DEALLOCATE, {"; SQL statement:
+desc contatos [42001-176]
+03-19 21:29:58 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DESC[*] * CONTATOS "; expected "DELETE, DROP, DECLARE, DEALLOCATE, {"; SQL statement:
+desc * contatos [42001-176]
+03-19 21:30:13 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DESC[*] DECLARE CONTATOS "; expected "DELETE, DROP, DECLARE, DEALLOCATE, {"; SQL statement:
+desc declare contatos [42001-176]
+03-19 21:31:07 jdbc[17]: exception
+org.h2.jdbc.JdbcSQLException: Column "ID" not found; SQL statement:
+create table contatos (
+  id_cont BIGINT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255),
+  email VARCHAR(255),
+  endereco VARCHAR(255),
+  dataNascimento DATE,
+  id_end BIGINT NOT NULL,
+  primary key (id)
+)
+ [42122-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.table.Table.getColumn(Table.java:637)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:75)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:108)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:73)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:170)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:186)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.eclipse.datatools.sqltools.sqleditor.result.SimpleSQLResultRunnable.runStatement(SimpleSQLResultRunnable.java:131)
+	at org.eclipse.datatools.sqltools.editor.core.result.ResultSupportRunnable.run(ResultSupportRunnable.java:158)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+03-19 21:35:40 jdbc[19]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE ENDERECO(
+  ID_END BIGINT NOT NULL AUTO_INCREMENT,
+  RUA VARCHAR(100),
+  NUM INT(7),
+  CIDADE VARCHAR(50),
+  ESTADO VARCHAR(50),
+  PAIS VARCHAR(50),
+  CEP INT(8),
+  ID_CONT BIGINT NOT NULL,
+  PRIMARY KEY (ID_END) "; expected "INDEX, ,, )"; SQL statement:
+create table endereco(
+  id_end BIGINT NOT NULL AUTO_INCREMENT,
+  rua VARCHAR(100),
+  num int(7),
+  cidade VARCHAR(50),
+  estado VARCHAR(50),
+  pais VARCHAR(50),
+  cep int(8),
+  id_cont BIGINT NOT NULL,
+  primary key (id_end) [42001-176]
+03-19 21:36:43 jdbc[21]: exception
+org.h2.jdbc.JdbcSQLException: Table "DB" not found; SQL statement:
+select * from db
+ [42102-176]
+03-19 21:37:00 jdbc[22]: exception
+org.h2.jdbc.JdbcSQLException: Table "DB" not found; SQL statement:
+select table from db [42102-176]
+03-19 21:40:08 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLException: Table "ENDERECOS" not found; SQL statement:
+drop table enderecos
+ [42102-176]
+03-19 21:40:18 jdbc[25]: exception
+org.h2.jdbc.JdbcSQLException: Table "CONTATOS" not found; SQL statement:
+drop table contatos
+ [42102-176]
+03-19 21:40:29 jdbc[26]: exception
+org.h2.jdbc.JdbcSQLException: Table "ENDERECOS" not found; SQL statement:
+drop table enderecos
+ [42102-176]
+03-19 21:41:41 jdbc[29]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "ALTER TABLE ENDERECOS
+ADD CONSTRAINT FK_ENDCONT FOREIGN KEY (ID_CONT) REFERENCES CONTATOS (ID_CONT)
+ALTER[*] TABLE CONTATOS
+ADD CONSTRAINT FK_CONTEND FOREIGN KEY (ID_END) REFERENCES CONTATOS (ID_END)
+ "; SQL statement:
+ALTER TABLE enderecos
+ADD CONSTRAINT fk_endcont FOREIGN KEY (id_cont) REFERENCES contatos (id_cont)
+ALTER TABLE contatos
+ADD CONSTRAINT fk_contend FOREIGN KEY (id_end) REFERENCES contatos (id_end)
+ [42000-176]
+03-19 22:19:32 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE LINK (
+   ID_CONT BIGINT NOT NULL
+   ID_END[*] BIGINT NOT NULL,
+   PRIMARY KEY  (""ID_CONT"",""ID_END""),
+   KEY ""CONTATO_ENDERECO"" (""ID_END"",""ID_CONT"")
+) "; expected "AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE link (
+   id_cont BIGINT NOT NULL
+   id_end BIGINT NOT NULL,
+   PRIMARY KEY  (`id_cont`,`id_end`),
+   KEY `contato_endereco` (`id_end`,`id_cont`)
+) [42001-176]
+03-19 22:20:17 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "CONTATO_ENDERECO"; SQL statement:
+CREATE TABLE link (
+   id_cont BIGINT NOT NULL,
+   id_end BIGINT NOT NULL,
+   PRIMARY KEY  (`id_cont`,`id_end`),
+   KEY `contato_endereco` (`id_end`,`id_cont`)
+) [50004-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3963)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3826)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5723)
+	at org.h2.command.Parser.parseCreate(Parser.java:4122)
+	at org.h2.command.Parser.parsePrepared(Parser.java:351)
+	at org.h2.command.Parser.parse(Parser.java:306)
+	at org.h2.command.Parser.parse(Parser.java:278)
+	at org.h2.command.Parser.prepareCommand(Parser.java:243)
+	at org.h2.engine.Session.prepareLocal(Session.java:442)
+	at org.h2.engine.Session.prepareCommand(Session.java:384)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:172)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.eclipse.datatools.sqltools.sqleditor.result.SimpleSQLResultRunnable.runStatement(SimpleSQLResultRunnable.java:131)
+	at org.eclipse.datatools.sqltools.editor.core.result.ResultSupportRunnable.run(ResultSupportRunnable.java:158)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+03-19 22:26:04 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE CONTATOS_ENDERECOS (
+   ID_CONT BIGINT NOT NULL
+   ID_END[*] BIGINT NOT NULL,
+   PRIMARY KEY  (ID_CONT,ID_END),
+   CONSTRAINT FK_ENDCONT2 FOREIGN KEY (ID_CONT) REFERENCES CONTATOS (ID_CONT),
+   CONSTRAINT FK_CONTEND2 FOREIGN KEY (ID_END) REFERENCES ENDERECOS (ID_END) "; expected "AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE contatos_enderecos (
+   id_cont BIGINT NOT NULL
+   id_end BIGINT NOT NULL,
+   PRIMARY KEY  (id_cont,id_end),
+   CONSTRAINT fk_endcont2 FOREIGN KEY (id_cont) REFERENCES contatos (id_cont),
+   CONSTRAINT fk_contend2 FOREIGN KEY (id_end) REFERENCES enderecos (id_end) [42001-176]
+03-19 22:27:16 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE CONTATOS_ENDERECOS (
+   ID_CONT BIGINT NOT NULL
+   ID_END[*] BIGINT NOT NULL,
+   PRIMARY KEY  (ID_CONT,ID_END),
+   CONSTRAINT FK_ENDCONT2 FOREIGN KEY (ID_CONT) REFERENCES CONTATOS (ID_CONT),
+   CONSTRAINT FK_CONTEND2 FOREIGN KEY (ID_END) REFERENCES ENDERECOS (ID_END) "; expected "AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE contatos_enderecos (
+   id_cont BIGINT NOT NULL
+   id_end BIGINT NOT NULL,
+   PRIMARY KEY  (id_cont,id_end),
+   CONSTRAINT fk_endcont2 FOREIGN KEY (id_cont) REFERENCES contatos (id_cont),
+   CONSTRAINT fk_contend2 FOREIGN KEY (id_end) REFERENCES enderecos (id_end) [42001-176]
+03-19 22:27:50 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE CONTATOS_ENDERECOS (
+   ID_CONT BIGINT NOT NULL
+   ID_END[*] BIGINT NOT NULL,
+   PRIMARY KEY  (ID_CONT,ID_END),
+   CONSTRAINT FK_ENDCONT2 FOREIGN KEY (ID_CONT) REFERENCES CONTATOS (ID_CONT),
+   CONSTRAINT FK_CONTEND2 FOREIGN KEY (ID_END) REFERENCES ENDERECOS (ID_END) "; expected "AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE contatos_enderecos (
+   id_cont BIGINT NOT NULL
+   id_end BIGINT NOT NULL,
+   PRIMARY KEY  (id_cont,id_end),
+   CONSTRAINT fk_endcont2 FOREIGN KEY (id_cont) REFERENCES contatos (id_cont),
+   CONSTRAINT fk_contend2 FOREIGN KEY (id_end) REFERENCES enderecos (id_end) [42001-176]
+03-19 22:27:52 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement ")"; SQL statement:
+) [42000-176]
+03-19 22:28:12 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Table "CONTATOS" not found; SQL statement:
+drop table contatos
+ [42102-176]
+03-19 22:28:16 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Table "ENDERECOS" not found; SQL statement:
+drop table enderecos
+ [42102-176]
+03-19 22:28:17 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Table "CONTATOS_ENDERECOS" not found; SQL statement:
+drop table contatos_enderecos
+ [42102-176]
+03-19 22:29:01 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE CONTATOS_ENDERECOS (
+   ID_CONT BIGINT NOT NULL
+   ID_END[*] BIGINT NOT NULL,
+   PRIMARY KEY  (ID_CONT,ID_END),
+   CONSTRAINT FKCE_ENDCONT FOREIGN KEY (ID_CONT) REFERENCES CONTATOS (ID_CONT),
+   CONSTRAINT FKCE_CONTEND FOREIGN KEY (ID_END) REFERENCES ENDERECOS (ID_END) "; expected "AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE contatos_enderecos (
+   id_cont BIGINT NOT NULL
+   id_end BIGINT NOT NULL,
+   PRIMARY KEY  (id_cont,id_end),
+   CONSTRAINT fkce_endcont FOREIGN KEY (id_cont) REFERENCES contatos (id_cont),
+   CONSTRAINT fkce_contend FOREIGN KEY (id_end) REFERENCES enderecos (id_end) [42001-176]
+03-19 22:29:25 jdbc[16]: exception
+org.h2.jdbc.JdbcSQLException: Table "CONTATOS_ENDERECOS" not found; SQL statement:
+drop table contatos_enderecos
+ [42102-176]
+03-19 22:29:41 jdbc[17]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE CONTATOS_ENDERECOS (
+   ID_CONT BIGINT NOT NULL
+   ID_END[*] BIGINT NOT NULL,
+   PRIMARY KEY  (ID_CONT,ID_END),
+   CONSTRAINT FKCE_ENDCONT FOREIGN KEY (ID_CONT) REFERENCES CONTATOS (ID_CONT),
+   CONSTRAINT FKCE_CONTEND FOREIGN KEY (ID_END) REFERENCES ENDERECOS (ID_END)
+)
+ "; expected "AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE contatos_enderecos (
+   id_cont BIGINT NOT NULL
+   id_end BIGINT NOT NULL,
+   PRIMARY KEY  (id_cont,id_end),
+   CONSTRAINT fkce_endcont FOREIGN KEY (id_cont) REFERENCES contatos (id_cont),
+   CONSTRAINT fkce_contend FOREIGN KEY (id_end) REFERENCES enderecos (id_end)
+)
+ [42001-176]
+03-19 23:01:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Parameter "#3" is not set; SQL statement:
+insert into contatos (nome,email,dataNascimento) values (?,?,?) [90012-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.expression.Parameter.checkSet(Parameter.java:81)
+	at org.h2.command.Prepared.checkParameters(Prepared.java:165)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:78)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcPreparedStatement.execute(JdbcPreparedStatement.java:199)
+	at br.com.lojamodel.dao.impl.ContatoDAO.create(ContatoDAO.java:47)
+	at br.com.lojamodel.RunApp.main(RunApp.java:19)
+03-20 00:04:10 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE CONTATOS_ENDERECOS (
+   ID_CONT BIGINT NOT NULL
+   ID_END[*] BIGINT NOT NULL,
+   PRIMARY KEY  (ID_CONT,ID_END),
+   CONSTRAINT FK_ENDCONT2 FOREIGN KEY (ID_CONT) REFERENCES CONTATOS (ID_CONT),
+   CONSTRAINT FK_CONTEND2 FOREIGN KEY (ID_END) REFERENCES ENDERECOS (ID_END) "; expected "AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE contatos_enderecos (
+   id_cont BIGINT NOT NULL
+   id_end BIGINT NOT NULL,
+   PRIMARY KEY  (id_cont,id_end),
+   CONSTRAINT fk_endcont2 FOREIGN KEY (id_cont) REFERENCES contatos (id_cont),
+   CONSTRAINT fk_contend2 FOREIGN KEY (id_end) REFERENCES enderecos (id_end) [42001-176]
+03-20 00:05:30 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE CONTATOS_ENDERECOS (
+   ID_CONT BIGINT NOT NULL
+   ID_END[*] BIGINT NOT NULL,
+   PRIMARY KEY  (ID_CONT,ID_END),
+   CONSTRAINT FKE_ENDCONT FOREIGN KEY (ID_CONT) REFERENCES CONTATOS (ID_CONT),
+   CONSTRAINT FKC_CONTEND FOREIGN KEY (ID_END) REFERENCES ENDERECOS (ID_END) "; expected "AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE contatos_enderecos (
+   id_cont BIGINT NOT NULL
+   id_end BIGINT NOT NULL,
+   PRIMARY KEY  (id_cont,id_end),
+   CONSTRAINT fke_endcont FOREIGN KEY (id_cont) REFERENCES contatos (id_cont),
+   CONSTRAINT fkc_contend FOREIGN KEY (id_end) REFERENCES enderecos (id_end) [42001-176]
+03-20 00:06:35 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Column "ID_CONT" not found; SQL statement:
+ALTER TABLE enderecos
+ADD CONSTRAINT fk_endcont FOREIGN KEY (id_cont) REFERENCES contatos (id_cont)
+ [42122-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.table.Table.getColumn(Table.java:637)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:75)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:198)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:73)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:186)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.eclipse.datatools.sqltools.sqleditor.result.SimpleSQLResultRunnable.runStatement(SimpleSQLResultRunnable.java:131)
+	at org.eclipse.datatools.sqltools.editor.core.result.ResultSupportRunnable.run(ResultSupportRunnable.java:158)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+03-20 00:09:01 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Table "CONTATOS" already exists; SQL statement:
+create table contatos (
+  id_cont BIGINT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255),
+  email VARCHAR(255),
+  dataNascimento DATE,
+  primary key (id_cont)
+)
+ [42101-176]
+03-20 00:12:20 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE CONTATOS_ENDERECOS (
+   ID_CONT BIGINT NOT NULL
+   ID_END[*] BIGINT NOT NULL,
+   PRIMARY KEY  (ID_CONT,ID_END),
+   CONSTRAINT FKE_ENDCONT FOREIGN KEY (ID_CONT) REFERENCES CONTATOS (ID_CONT),
+   CONSTRAINT FKC_CONTEND FOREIGN KEY (ID_END) REFERENCES ENDERECOS (ID_END) "; expected "AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE contatos_enderecos (
+   id_cont BIGINT NOT NULL
+   id_end BIGINT NOT NULL,
+   PRIMARY KEY  (id_cont,id_end),
+   CONSTRAINT fke_endcont FOREIGN KEY (id_cont) REFERENCES contatos (id_cont),
+   CONSTRAINT fkc_contend FOREIGN KEY (id_end) REFERENCES enderecos (id_end) [42001-176]
+03-20 00:21:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ENDERECO" not found; SQL statement:
+SELECT MAX(id_end) FROM endereco [42102-176]
+03-20 00:27:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+insert into contatos (nome,email,dataNascimento,id_end) values (?,?,?) [21002-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.message.DbException.get(DbException.java:143)
+	at org.h2.command.dml.Insert.prepare(Insert.java:266)
+	at org.h2.command.Parser.prepareCommand(Parser.java:248)
+	at org.h2.engine.Session.prepareLocal(Session.java:442)
+	at org.h2.engine.Session.prepareCommand(Session.java:384)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:73)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:276)
+	at br.com.lojamodel.dao.impl.ContatoDAO.create(ContatoDAO.java:55)
+	at br.com.lojamodel.RunApp.main(RunApp.java:19)
+03-20 19:05:22 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "COUNT[*] * ID_COUNT "; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT, {"; SQL statement:
+count * id_count [42001-176]
+03-20 19:05:36 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "COUNT[*] * ID_CONT "; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT, {"; SQL statement:
+count * id_cont [42001-176]
+03-20 19:06:05 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "COUNT[*] * ID_CONT FROM CONTATOS "; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT, {"; SQL statement:
+count * id_cont from contatos [42001-176]
+03-20 19:06:34 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "COUNT[*] ID_CONT FROM CONTATOS "; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT, {"; SQL statement:
+count id_cont from contatos [42001-176]
+03-20 19:06:42 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Column "COUNT" not found; SQL statement:
+select count id_cont from contatos [42122-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:148)
+	at org.h2.expression.Alias.optimize(Alias.java:52)
+	at org.h2.command.dml.Select.prepare(Select.java:831)
+	at org.h2.command.Parser.prepareCommand(Parser.java:248)
+	at org.h2.engine.Session.prepareLocal(Session.java:442)
+	at org.h2.engine.Session.prepareCommand(Session.java:384)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:172)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.eclipse.datatools.sqltools.sqleditor.result.SimpleSQLResultRunnable.runStatement(SimpleSQLResultRunnable.java:131)
+	at org.eclipse.datatools.sqltools.editor.core.result.ResultSupportRunnable.run(ResultSupportRunnable.java:158)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+03-20 19:44:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: No data is available [2000-176]
+03-20 19:46:08 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DELETE *[*] FROM CONTATOS "; expected "identifier"; SQL statement:
+delete * from contatos [42001-176]
+03-20 20:30:06 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE ENDERECOS
+DROP[*] TABLE CONTATOS
+"; SQL statement:
+DROP TABLE ENDERECOS
+DROP TABLE CONTATOS
+ [42000-176]
+03-20 20:41:18 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE ENDERECOS
+DROP[*] TABLE CONTATOS
+"; SQL statement:
+DROP TABLE ENDERECOS
+DROP TABLE CONTATOS
+ [42000-176]
+03-20 20:43:03 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE CONTATOS (
+  ID_CONT BIGINT NOT NULL AUTO_INCREMENT,
+  NOME VARCHAR(255),
+  EMAIL VARCHAR(255),
+  DATANASCIMENTO DATE,
+  ID_END BIGINT NOT NULL,
+  PRIMARY KEY (ID_CONT),
+  CONSTRAINT FK_CONTEND FOREIGN KEY (ID_END) REFERENCES ENDERECOS (ID_END) "; expected "INDEX, ON, NOT, DEFERRABLE, NOCHECK, CHECK, ,, )"; SQL statement:
+create table contatos (
+  id_cont BIGINT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255),
+  email VARCHAR(255),
+  dataNascimento DATE,
+  id_end BIGINT NOT NULL,
+  primary key (id_cont),
+  CONSTRAINT fk_contend FOREIGN KEY (id_end) REFERENCES enderecos (id_end) [42001-176]
+03-20 20:43:35 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE ENDERECOS(
+  ID_END BIGINT NOT NULL AUTO_INCREMENT,
+  RUA VARCHAR(100),
+  NUM INT(7),
+  CIDADE VARCHAR(50),
+  ESTADO VARCHAR(50),
+  CEP INT(8),
+  ID_CONT BIGINT NOT NULL,
+  PRIMARY KEY (ID_END),
+  CONSTRAINT FK_ENDCONT FOREIGN KEY (ID_CONT) REFERENCES CONTATOS (ID_CONT) "; expected "INDEX, ON, NOT, DEFERRABLE, NOCHECK, CHECK, ,, )"; SQL statement:
+create table enderecos(
+  id_end BIGINT NOT NULL AUTO_INCREMENT,
+  rua VARCHAR(100),
+  num int(7),
+  cidade VARCHAR(50),
+  estado VARCHAR(50),
+  cep int(8),
+  id_cont BIGINT NOT NULL,
+  primary key (id_end),
+  CONSTRAINT fk_endcont FOREIGN KEY (id_cont) REFERENCES contatos (id_cont) [42001-176]
+03-20 20:43:41 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: Table "CONTATOS" already exists; SQL statement:
+create table contatos (
+  id_cont BIGINT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255),
+  email VARCHAR(255),
+  dataNascimento DATE,
+  id_end BIGINT NOT NULL,
+  primary key (id_cont)
+  
+)
+ [42101-176]
+03-20 20:43:58 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLException: Table "CONTATOS" already exists; SQL statement:
+create table contatos (
+  id_cont BIGINT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255),
+  email VARCHAR(255),
+  dataNascimento DATE,
+  id_end BIGINT NOT NULL,
+  primary key (id_cont)
+  
+)
+ [42101-176]
+03-20 20:44:09 jdbc[16]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE ENDERECOS
+DROP[*] TABLE CONTATOS
+"; SQL statement:
+DROP TABLE ENDERECOS
+DROP TABLE CONTATOS
+ [42000-176]
+03-20 20:44:22 jdbc[18]: exception
+org.h2.jdbc.JdbcSQLException: Table "ENDERECOS" not found; SQL statement:
+DROP TABLE ENDERECOS
+ [42102-176]
+03-20 20:44:30 jdbc[19]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE ENDERECOS(
+  ID_END BIGINT NOT NULL AUTO_INCREMENT,
+  RUA VARCHAR(100),
+  NUM INT(7),
+  CIDADE VARCHAR(50),
+  ESTADO VARCHAR(50),
+  CEP INT(8),
+  ID_CONT BIGINT NOT NULL,
+  PRIMARY KEY (ID_END),
+  CONSTRAINT FK_ENDCONT FOREIGN KEY (ID_CONT) REFERENCES CONTATOS (ID_CONT) "; expected "INDEX, ON, NOT, DEFERRABLE, NOCHECK, CHECK, ,, )"; SQL statement:
+create table enderecos(
+  id_end BIGINT NOT NULL AUTO_INCREMENT,
+  rua VARCHAR(100),
+  num int(7),
+  cidade VARCHAR(50),
+  estado VARCHAR(50),
+  cep int(8),
+  id_cont BIGINT NOT NULL,
+  primary key (id_end),
+  CONSTRAINT fk_endcont FOREIGN KEY (id_cont) REFERENCES contatos (id_cont) [42001-176]
+03-20 20:45:08 jdbc[21]: exception
+org.h2.jdbc.JdbcSQLException: Table "ENDERECOS" not found; SQL statement:
+DROP TABLE ENDERECOS
+ [42102-176]
+03-20 20:45:19 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE ENDERECOS(
+  ID_END BIGINT NOT NULL AUTO_INCREMENT,
+  RUA VARCHAR(100),
+  NUM INT(7),
+  CIDADE VARCHAR(50),
+  ESTADO VARCHAR(50),
+  CEP INT(8),
+  ID_CONT BIGINT NOT NULL,
+  PRIMARY KEY (ID_END),
+  CONSTRAINT FK_ENDCONT FOREIGN KEY (ID_CONT) REFERENCES CONTATOS (ID_CONT) "; expected "INDEX, ON, NOT, DEFERRABLE, NOCHECK, CHECK, ,, )"; SQL statement:
+create table enderecos(
+  id_end BIGINT NOT NULL AUTO_INCREMENT,
+  rua VARCHAR(100),
+  num int(7),
+  cidade VARCHAR(50),
+  estado VARCHAR(50),
+  cep int(8),
+  id_cont BIGINT NOT NULL,
+  primary key (id_end),
+  CONSTRAINT fk_endcont FOREIGN KEY (id_cont) REFERENCES contatos (id_cont) [42001-176]

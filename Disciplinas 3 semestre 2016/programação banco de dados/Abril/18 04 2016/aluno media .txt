@@ -1,0 +1,59 @@
+create table aluno(
+ra number(5) primary key,
+nome varchar2(50),
+disciplina varchar2(50),
+media number(5.1),
+carga_hora number(5),
+faltas number(5),
+resultado varchar2(50),
+data date);
+
+create sequence ra_seq;
+
+insert into aluno values( ra_seq.nextval,'Moises','programacao',9.0,80,30,null,null);
+insert into aluno values( ra_seq.nextval,'Matheus','UML',5.5,40,2,null,null);
+insert into aluno values( ra_seq.nextval,'jorge','PHP',6.9,80,20,null,null);
+insert into aluno values( ra_seq.nextval,'henry','programacao',7.5,80,12,null,null);
+insert into aluno values( ra_seq.nextval,'lucas','UML',7.0,40,8,null,null);
+insert into aluno values( ra_seq.nextval,'leandro','programacao',2.0,80,1,null,null);
+insert into aluno values( ra_seq.nextval,'Felipe','PHP',8.1,80,22,null,null);
+
+
+set serveroutput on
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+declare 
+	a_caso varchar2(50);
+	cursor a_resultado is
+		select ra, media, carga_hora, faltas, data from aluno;
+begin 
+	for aresultado in a_resultado
+	loop
+		case
+		when aresultado.media>=7.0 and aresultado.faltas<=(aresultado.carga_hora*0.25) then  update aluno set resultado = 'aprovado', data = sysdate where ra = aresultado.ra;
+		when aresultado.media between 4.0 and 7.0 and aresultado.faltas<=(aresultado.carga_hora*0.25) then update aluno set resultado = 'exame', data = sysdate where ra = aresultado.ra;
+		else	update aluno set resultado = 'reprovado',data = sysdate where ra = aresultado.ra;
+end case;
+	end loop;
+end;
+/
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+declare 
+	a_caso varchar2(50);
+	cursor a_resultado is
+		select ra, media, carga_hora, faltas, data from aluno;
+begin 
+	for aresultado in a_resultado
+	loop
+		a_caso := case
+		when aresultado.media>=7.0 and aresultado.faltas<=(aresultado.carga_hora*0.25) then 'aprovado' 
+		when aresultado.media between 4.0 and 7.0 and aresultado.faltas<=(aresultado.carga_hora*0.25) then 'exame'
+		when aresultado.media<=40 then 'reprovado'
+		end;
+		update aluno set resultado = a_caso, data = sysdate where ra = aresultado.ra;
+	end loop;
+end;
+/				

@@ -1,0 +1,25 @@
+CREATE TABLE funcionario(
+matricula number(4) constraint fun_mat_pk primary key,
+nome varchar2(20) constraint fun_nome_nn not null,
+salario number(8,2),
+dt_admissao date constraint fun_dt_nn not null,
+comissao char(1) constraint fun_com_nn not null);
+
+insert into funcionario values(1,'Claudia',5000,'10/10/2010','A');
+
+insert into funcionario values(2,'Silvio',5680,'07/12/2000','B');
+
+insert into funcionario values(3,'Vanessa',4598,'23/08/2011','A');
+
+insert into funcionario values(4,'Ricardo',5350,'01/04/2000','A');
+
+update funcionario
+set comissao='C'
+WHERE matricula=4;
+
+select * from funcionario;
+
+select nome, salario from funcionario;
+
+
+select nome, salario from funcionario where salario>=5000;

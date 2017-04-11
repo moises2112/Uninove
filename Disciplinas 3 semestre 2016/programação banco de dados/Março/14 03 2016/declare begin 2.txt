@@ -1,0 +1,47 @@
+Declare
+	v_aux number(2):=0;
+Begin
+	loop
+		v_aux:=v_aux+1;
+		dbms_output.put_line (v_aux);
+		if v_aux=10 
+		then exit;
+		end if;
+	end loop;
+end;
+/
+=======================================================================================
+EXERCICIO 1
+
+criar um bloco pl/sql para calcular os valores das parcelas da compra de um carro, nas seguintes condições:
+-10 parcelas
+-o valor do carro devera ser informado em tempo de execução
+-o valor dos juros é de 3% e devera ser aplicado sobre o montante financiado
+-no final informar o valor total com juros e o valor de cada parcela
+
+
+Declare
+	v_preco number(30) :=&preco;
+Begin
+	v_preco:=(v_preco*1.03);
+	dbms_output.put_line('O valor total com juros e'||v_preco);
+	v_preco:=(v_preco/10);
+	dbms_output.put_line('O valor de cada parcela com juros e'||v_preco);
+end;
+/
+=========================================================================================================
+EXERCICIO 2
+
+criar um bloco pl/sql para calcular o valor em reais de 45 dolares, sendo que o valor do cambio a ser considerado e de 3,80.
+
+
+Declare
+	v_dolar number(30) :=&dolar;
+	v_real number(30);
+Begin
+	v_real:=(v_dolar*3.80);
+	dbms_output.put_line('O valor '||v_dolar||'U$, convertido se torna'||v_real||'R$');
+
+end;
+/
+==================================================================================================================

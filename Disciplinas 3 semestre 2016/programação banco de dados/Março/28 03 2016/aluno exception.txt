@@ -1,0 +1,17 @@
+DECLARE
+	v_ra aluno.ra%type:=30;
+	v_nome aluno.nome%type;
+BEGIN
+	select ra, nome into v_ra,v_nome from aluno
+	where ra=v_ra;
+	dbms_output.put_line(v_ra||'-'v_nome);
+EXCEPTION
+	when no_data_found then
+		dbms_output.put_line('nao ha nenhum aluno com este ra');
+	when too_many_rows then
+		dbms_output.put_line('ha mais de um aluno com este ra');
+	when others then 
+		dbms_output.put_line('erro desconhecido');
+end;
+/
+	

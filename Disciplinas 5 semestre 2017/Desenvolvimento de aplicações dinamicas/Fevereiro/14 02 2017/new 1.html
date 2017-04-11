@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title> Terça</title>
+		<style>
+			/*Tudo CSS
+			
+			Seletores 
+				-class .(ponto )
+				-id    #(Cerquilha)
+				-tag HTML 
+			*/
+			
+			p{
+				background-color:red;
+				color:lavender;
+				font-size:100px;
+				font-family:"Comic Sans MS";
+			}
+			h1{
+				color:lavender;
+				font-family:Arial;
+			}
+			
+			.cor{
+				color:yellow;
+			}
+			
+		</style>
+		<script>
+			//alert("Olha o gás!")
+			function terca(){
+				document.body.style.background="#ffa500 " ;
+				document.getElementById("teste").border="10";
+					
+			}
+		</script>
+		
+	</head>
+	<body style="background-color:green">
+		<p> Criar parágrafo </p>
+		 &lt;br&gt;
+		<b>Sistemas da informação</b>
+		<hr>
+		<h1> Table</h1>
+		<table border="3" id="teste">
+			<tr style="text-align:center">
+				<td>Aluno</td>
+				<td>RA</td>
+				<td>Data</td>
+			</tr>
+			<tr>
+				<td> Thiago</td>
+				<td>111222</td>
+				<td>21/12/1993</td>
+			</tr>
+		</table>
+		<h1> Javascript </h1>
+		<input type="button" value="Clique" onclick="terca();"
+		/>
+		
+		<h2 class="cor"> Seletor Class</h2>
+		<p class="cor"> Moises </p>
+	</body>
+	
+	
+</html>

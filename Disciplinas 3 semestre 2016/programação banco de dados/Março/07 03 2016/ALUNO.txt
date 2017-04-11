@@ -1,0 +1,42 @@
+DECLARE
+
+PI CONSTANT NUMBER(9,7):= 3.1415927;
+
+V_RA NUMBER (10)
+V_NOME ALUNO.NOME%TYPE;
+V_1 NUMBER(5);
+V_TOTAL := V_QUANT * V_VALOR;
+
+BEGIN
+
+SELECT RA, NOME INTO V_RA, V_NOME FROM ALUNO WHERE RA=1;
+
+====================================================================================================================================
+
+create table aluno (
+RA number(10) primary key,
+NOME varchar2(30));
+
+insert into aluno values (1,'Moises');
+insert into aluno values (2,'Matheus');
+insert into aluno values (3,'jorge');
+insert into aluno values (4,'ericson');
+insert into aluno values (5,'ana');
+insert into aluno values (6,'gabriel');
+insert into aluno values (7,'jesus');
+insert into aluno values (8,'Henry');
+
+SET SERVEROUTPUT ON
+
+alter table aluno modify nome varchar2(31);
+
+declare
+V_ra aluno.ra%type;
+V_nome aluno.nome%type;
+
+BEGIN 
+
+select ra, nome into V_RA, V_NOME from aluno where ra=4;
+dbms_output.put_line (V_RA||'-'||V_NOME);
+end;
+/

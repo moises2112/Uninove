@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+			#calcular{
+				height: 20px;
+				width: 65px;
+			}
+	</style>
+	<script type="text/javascript">
+
+		function numdias(mes,ano) {
+    //mês ímpar menor que 8 ou mês par maior que 7 tem 31 dias
+    if((mes<8 && mes%2==1) || (mes>7 && mes%2==0)) return 31;
+
+    //se não for fevereiro, os outros meses que não os de cima têm 30 dias
+    if(mes!=2) return 30;
+
+    //ano bissexto é múltiplo de 4
+    if(ano%4==0) return 29;
+    return 28;
+}
+		
+		
+		function Calc(obj) {
+			var a = document.getElementById(obj).value;
+			var b = a.length;
+		//Banco
+			banco = "";
+			for (var i = 0; i<3; i++) {
+				banco+=a.charAt(i);
+			}
+			
+			switch (banco) {
+				case "341":
+					
+					document.getElementById("banco").value="Itau";
+				break;
+				case "001":
+					document.getElementById("banco").value="bb";
+				break;
+				case "033":
+					document.getElementById("banco").value="santander";
+				break;
+				case "237":
+					document.getElementById("banco").value="bradesco";
+				break;
+				case "104":
+					document.getElementById("banco").value="caixa";
+				break;
+			}
+
+
+		//datevencimento
+			var numvenc=a.substring(a.length-10,a.length-14);
+			var database="07/10/1997";
+			var dias = parseInt(numvenc);
+    		data=database.split('/');
+    		diafuturo=parseInt(data[0])+dias;
+    		mes=parseInt(data[1]);
+    		ano=parseInt(data[2]);
+
+    		while(diafuturo>numdias(mes,ano)) {
+        		diafuturo-=numdias(mes,ano);
+        		mes++;
+        		if(mes>12) {
+            		mes=1;
+            		ano++;
+        	}
+    	}
+    	
+    	document.getElementById("vencimento").value=diafuturo+"/"+mes+"/"+ano;
+    	//^^data vencimeno^^
+    	var valor="";
+    	for (var i = a.length-10; valor==""; i++) {
+    		if (a.charAt(i)!="0") {		
+    			valor+=a.substring(i,a.length);
+    			
+    		}
+    	}
+    	alert(valor);
+    	numeroantesvirgula = valor.substring(0,valor.length-2);
+    	numeroposvirgula = valor.substring(valor.length-2,valor.length);
+    	valor ="R$"+ numeroantesvirgula+","+numeroposvirgula;
+    	document.getElementById("valor").value=valor
+
+	}
+
+	</script>
+</head>
+<body>
+<div>
+<h1>Atividade</h1>
+Digite o código de barras do boleto:<input type="text" id="numboleto"/>
+<button  id="calcular" onclick="Calc('numboleto')">	
+Calcular</button>
+<br>
+<table>
+<td>
+	<tr><h2>Banco:<input id="banco" /></h2><br></tr>
+	<tr><h2>Data vencimento:<input id="vencimento" /></h2><br></tr>
+	<tr><h2>Valor:<input id="valor" /></h2><br></tr>
+</td>
+</table>
+
+
+
+
+</div>
+</body>
+</html>

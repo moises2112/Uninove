@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- script que importa jquery-->
+<script type="text/javascript" src="jquery.js"></script>
+
+<script type="text/javascript">
+	$(document).ready( function() {
+		// body...
+		//Exemplo encontrando elemento utilizando JQuery
+		$('#botao').click(function(){
+			$('#cor').css('color','red');
+		});
+
+		//Exemplo seletor class
+		$('.teste').click(function(){
+			$('.diferente').css('background','green');
+		});
+
+		//Exemplo Agrupamento de seletores
+		$('.teste2').click(function(){
+			$('.outra,.diferente2,li').css('background','red');
+		});
+
+		//Exemplo seletor composto
+		$('.teste3').click(function(){
+			$('div span').css('color','green');
+		});
+
+		//Exemplo seletor first
+		$('.teste4').click(function(){
+			$('.lifirst:first').css('color','red');
+		});
+
+		//Exemplo seletor last
+		$('.teste5').click(function(){
+			$('.lilast:last').css('color','green');
+		});
+
+		//Exemplo seletor odd
+		$('.teste6').click(function(){
+			$('tr:odd').css('background','red');
+		});
+
+		//Exemplo seletor eq
+		$('.teste7').click(function(){
+			$('#eqtable tr:eq(1)').css('background','green');
+		});
+
+	})
+
+</script>
+
+<style type="text/css">
+	.diferente{width: 200px;height: 100px;border: 1px solid #000; }
+
+</style>
+
+	<title>Atividade 4</title>
+</head>
+<body>
+<h1>Exemplo encontrando elemento utilizando JQuery</h1>
+	
+		<h2 id="cor">Cabeçalho muda de cor</h2>
+		<input type="button" value="vermelho"  id="botao" />
+	
+<hr>
+
+
+<h1>Exemplo seletor class</h1>
+	
+		<button type="button" class="teste"> Verde</button>
+		<div class="diferente"> </div>
+	
+<hr>
+
+
+<h1>Exemplo Agrupamento de seletores</h1>
+	
+		<button type="button" class="teste2">Vermelha</button>
+		<div class="diferente2">DIV com class="diferente2"</div>
+		<p class="outra">Paragrafo com class="outra"</p>
+		<ul>
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
+		</ul>
+	
+<hr>
+
+
+<h1>Exemplo seletor composto</h1>
+	<div>
+		<button type="button" class="teste3"> Verde</button>
+		<p>Paragrafo filho da div com <span>texto</span> marcado com span</p>
+	</div>
+<hr>
+
+
+<h1>Exemplo seletor first</h1>
+	<button type="button" class="teste4">Vermelha</button>
+	<ul>
+		<li class="lifirst">Primeito item</li>
+		<li class="lifirst">Segundo item</li>
+		<li class="lifirst">Terceira item</li>
+	</ul>
+<hr>
+
+
+<h1>Exemplo seletor last</h1>
+	<button type="button" class="teste5">Verde</button>
+	<ul>
+		<li class="lilast">Primeito item</li>
+		<li class="lilast">Segundo item</li>
+		<li class="lilast">Terceira item</li>
+	</ul>
+<hr>
+
+<h1>Exemplo seletor odd</h1>
+	<button type="button" class="teste6">Vermelha</button>
+	<table border="1">
+		<tr>
+			<td> Item 0 </td>
+		</tr>
+		<tr>
+			<td> Item 1 </td>
+		</tr>
+		<tr>
+			<td> Item 2 </td>
+		</tr>
+		<tr>
+			<td> Item 3 </td>
+		</tr>
+	</table>
+<hr>
+
+<h1>Exemplo seletor eq</h1>
+	<button type="button" class="teste7">Verde</button>
+	<table id="eqtable" border="1">
+		<tr>
+			<td>Item 0 </td>
+			<td>Item 0 </td>
+		</tr>
+		<tr>
+			<td>Item 1</td><td>Item 1</td>
+		</tr>
+		<tr>
+			<td>Item 2 </td>
+			<td>Item 2 </td>
+		</tr>
+	</table>
+</body>
+</html>

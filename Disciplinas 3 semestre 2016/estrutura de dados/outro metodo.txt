@@ -1,0 +1,67 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctype.h>
+using namespace std;
+
+int reiniciar (void); 
+
+int main (void){
+    reiniciar ();
+}
+
+int reiniciar (void){
+    char opcao;
+    cout <<"Deseja reiniciar o programa? [S/N]\n";
+    cin >> opcao;
+    opcao=toupper(opcao); // deixa a letra maiúscula
+    switch (opcao){
+        case 'S': //Entre aspas simples porque é um caracter
+             system ("cls");
+             main ();
+        case 'N': //Entre aspas simples porque é um caracter
+             return EXIT_SUCCESS;
+        default:
+            cout <<"\aOpcao invalida!\n\n";
+            reiniciar ();
+    }
+}
+
+===========================================================================================
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+int main (void){
+    int a, b, c, operacao;
+    cout <<"Digite o 1o valor: ";
+    cin >> a;
+    cin.ignore ();
+    cout <<"Digite o 2o valor: ";
+    cin >> b;
+    cin.ignore ();
+    cout <<"Que operacao deseja realizar?\n
+\1. Adicao\t2.Subtracao\t3.Multiplicacao\t4.Divisao\n\n=>";
+    cin >> operacao;
+    cin.ignore ();
+    system ("cls");
+    switch (operacao){
+        case 1:
+            c=a+b;
+            cout <<a<<" + "<<b<<" = "<<c<<"\n\n";
+            break;
+        case 2:
+            c=a-b;
+            cout <<a<<" - "<<b<<" = "<<c<<"\n\n";
+            break;
+        case 3:
+            c=a*b;
+            cout <<a<<" * "<<b<<" = "<<c<<"\n\n";
+            break;
+        case 4:
+            c=a/b;
+            cout <<a<<" / "<<b<<" = "<<c<<"\n\n";
+            break;
+    }
+    system ("pause");
+    return EXIT_SUCCESS;
+}

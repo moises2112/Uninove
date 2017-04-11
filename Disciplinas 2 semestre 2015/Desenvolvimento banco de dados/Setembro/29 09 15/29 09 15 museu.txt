@@ -1,0 +1,58 @@
+create table artista(
+     ArtId number(10) not null,
+     Nome varchar2(25) not null unique,
+     DataNasc date,
+     DataMorte date,
+     PaisdeOrigem varchar2(50),
+     EstiloPrincipal varchar2(50) not null,
+     Periodo char(20) not null,
+     Descricao varchar2(255) not null,
+     constraint ID_ARTISTA_ID primary key (ArtId));
+
+create table objeto_de_arte (
+     Classe varchar2(10) not null,
+     TipoObj Varchar2(10) not null,
+     Pais_Cultura varchar2(50),
+     Periodo varchar2(50),
+     Estilo varchar2(50),
+     NumId number(10) not null,
+     Ano_Criacao date,
+     Titulo varchar2(100) not null,
+     Descricao varchar2(255) not null,
+     Artista number(10),
+     Custo number(9,2),
+     constraint ID_OBJETO_DE_ARTE_ID primary key (NumId));
+
+alter table objeto_de_arte add constraint ID_ART_OBJET_FK
+     foreign key (Artista)
+     references artista;
+
+
+
+insert into artista values(1,'Moises','21/12/1993','27/09/2015','japao','cannabis','media',
+'um belo quadro de uma flor de 7 folhas');
+
+
+insert into artista values(2,'blimblimboy','22/10/1994','30/09/2115','jamaica','cocaine','velho',
+'quadro de gala branca');
+
+
+
+insert into objeto_de_arte values('Sofista','rustico','grecia','antigo','vagabundo',1,'09/09/1985',
+'bela janela','e uma linda janela',1,2000.00);
+
+insert into objeto_de_arte values('empirico','rustico','roma','antigo','aristocrata',2,'09/09/1985',
+'bela bola','e uma linda bola',2,5000.00);
+
+insert into objeto_de_arte values('jokley','rustico','roma','antigo','aristocrata',3,'09/09/1985',
+'bela pedra','e uma linda pedra',2,1.00);
+
+
+
+alter table objeto_de_arte add nivel varchar2(40);
+
+update objeto_de_arte set nivel=case
+when custo <1000.00 then 'muito barato'
+when custo between 1000.00 and 4999.00 then 'razoavel'
+when custo between 5000 and 99999 then 'caro'
+end;

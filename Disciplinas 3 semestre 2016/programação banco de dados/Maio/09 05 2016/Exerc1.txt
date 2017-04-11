@@ -1,0 +1,46 @@
+create table produto(
+cod number(4) primary key,
+nome varchar2(20),
+valor number(9,2),
+cat number(4));
+
+insert into produto values(1,'Sofa',500.00,4);
+insert into produto values(2,'Geladeira',750.00,3);
+insert into produto values(3,'Fogão',1000.00,2);
+insert into produto values(4,'Televisao',1250.00,1);
+insert into produto values(5,'Cama',1500.00,4);
+
+Create or replace procedure aumenta_valor
+(v_categoria in produto.cat%type,
+v_percentual number) is
+
+Begin 
+update produto
+	set valor= valor*(1+v_percentual/100)
+where cat=v_categoria;
+end aumenta_valor;
+/
+a
+exec aumenta_valor(10,25);
+============================================================================================
+
+Create or replace procedure insere_linha
+(v_categoria in produto.cat%type,
+ v_nome in produto.nome%type,
+ v_cod in produto.cod%type,
+ v_valor in produto.valor%type) is
+
+Begin 
+ insert into produto values(v_categoria,'v_nome',v_cod,v_valor);
+end insere_linha;
+/
+============================================================================================
+Create or replace procedure exclui_linha
+( v_cod in produto.cod%type) is
+
+Begin 
+delete from produto 
+	where cod=v_cod;
+end exclui_linha;
+/
+

@@ -1,0 +1,108 @@
+EXERCICIO 1 :
+
+#include <stdio.h>
+#include <stdlib.h>
+#define max1 10
+#define max2 20
+int lervetor(int vet1[], int vet2[]){
+    int b;
+    printf("Digite os %d valores para o vetor A:\n",max1);
+    for(b=0;b<max1;b++)
+        scanf("%d",&vet1[b]);
+    printf("Digite os %d valores para o vetor B:\n",max1);
+    for(b=0;b<max1;b++)
+        scanf("%d",&vet2[b]);
+}
+
+int vetorc(int vet1[], int vet2[],int vet3[]){
+    int b;
+    for(b=0;b<max1;b++){
+        vet3[b]=vet1[b];
+        vet3[b+max1]=vet2[b];
+    }
+}
+
+int mostvetorc(int vet3[]){
+    system("cls");
+    int b;
+    for (b=0;b<max2;b++)
+        printf("Vetor C[%d] = %d\n",b+1,vet3[b]);
+}
+
+int main(){
+       int v1[max1],v2[max1],v3[max2];
+       lervetor(v1,v2);
+       vetorc(v1,v2,v3);
+       mostvetorc(v3);
+       system("pause>>null");
+}
+
+EXERCICIO 2 :
+
+#include <stdlib.h>
+#include <stdio.h>
+
+void ssort (int v[], int t)
+{
+     int i, j, min, k;
+     
+     for (i=0;i<(t-1);i++)
+     {
+         min = i;
+         
+         for (j=(i+1);j<t;j++)
+         {
+             if (v[j]<v[min])
+             min = j;
+             }
+
+             if (i!=min)
+             {
+                        k=v[i];
+                        v[i]=v[min];
+                        v[min]=k;
+                        
+                        }
+                        }
+                        }               
+                        
+     main () {
+
+     int i,m;     
+     int v[12];
+     
+     for (m=0;m<12;m++){       
+     printf("Digite a temperatura do %d mes do ano: ",m+1);
+     scanf("%d", &v[m]);
+     }
+     ssort(v,12);
+
+     printf("\n\nVetor Ordenado!\n\n");
+     
+     for (i=0;i<12;i++) 
+     printf("%d\n",v[i]);
+     
+     printf("\n\nA maior temperatura eh %d, e a menor temperatura eh %d.", v[11], v[0]);
+     
+     system("pause>>null");
+     
+     }
+
+EXERCICIO 3 :
+R: Em uma pesquisa sequencial, é feita a busca por um determinado valor, verificando posição por posição até encontra-lo. Tendo a matriz ou vetor ordenado torna-se mais rapido identificar se o valor esta presente ou não.
+
+EXERCICIO 4:
+R: Na pesquisa sequencial é verificado posição após posição, enquanto que na pesquisa binaria é dividido pela metade a quantidade de posições para mais facilmente identificar em quando dos "lados" esta o valor procurado.
+
+EXERCICIO 5:
+R:A pesquisa binaria é mais eficiente pois encontra o valor em menos etapas, devido a seu método de busca dividir a quantidade de posições e filtrar em quais delas é necessário realizar a busca.
+
+EXERCICIO 6:
+R:bubble sort, selection sort e insertion sort.
+
+EXERCICIO 7:
+R:selection sort= passa o menor valor do vetor para a primeira posição, depois o segundo menor valor para a segunda posição e assim sucessivamente.
+
+insert sort= neste algoritmo a lista é percorrida da esquerda para a direita, a medida que avança vai deixando os elementos mais a esquerda ordenados.
+
+bubble sort=nesse caso o algoritmo do elemento 1 será comparado com a posição do elemento 2 caso o elemento da posição 1 seja maior que a posição 2 eles trocam de lugar.

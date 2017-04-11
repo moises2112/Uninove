@@ -1,0 +1,69 @@
+declare
+V_ra aluno.ra%type:=4;
+V_nome aluno.nome%type;
+
+BEGIN 
+
+select ra, nome into V_RA, V_NOME from aluno where ra=2;
+dbms_output.put_line (V_RA||'-'||V_NOME);
+end;
+/
+
+=========================================================================================================
+declare
+V_ra aluno.ra%type:=4;
+V_nome aluno.nome%type;
+
+BEGIN 
+
+select ra, nome into V_RA, V_NOME from aluno where ra=v_ra;
+dbms_output.put_line (V_RA||'-'||V_NOME);
+end;
+/
+=========================================================================================================
+declare
+V_ra aluno.ra%type:=&ra;
+V_nome aluno.nome%type;
+
+BEGIN 
+
+insert into aluno values(9,'felipe');
+select ra, nome into V_RA, V_NOME from aluno where ra=v_ra;
+dbms_output.put_line ('O RA DA(O) '||V_NOME||' É '||V_RA);
+end;
+/
+=========================================================================================================
+declare
+V_ra aluno.ra%type:=&ra;
+V_nome aluno.nome%type:='&nome';
+
+BEGIN 
+
+insert into aluno values(v_ra,v_nome);
+dbms_output.put_line ('NOVO REGISTRO '||V_RA||'-'||V_NOME);
+end;
+/
+===========================================================================================================
+declare
+V_ra aluno.ra%type:=&ra;
+V_nome aluno.nome%type:='&nome';
+
+BEGIN 
+
+insert into aluno(RA) values(v_ra);
+select ra,nome into v_ra, v_nome from aluno where ra=v_ra;
+dbms_output.put_line ('NOVO REGISTRO '||V_RA||'-'||V_NOME);
+end;
+/
+===========================================================================================================
+declare
+V_ra aluno.ra%type:=&ra;
+V_nome aluno.nome%type:='&nome';
+
+BEGIN 
+update aluno set nome = v_nome where ra = v_ra;
+select ra,nome into v_ra, v_nome from aluno where ra=v_ra;
+dbms_output.put_line ('NOVO REGISTRO '||V_RA||'-'||V_NOME);
+end;
+/
+===========================================================================================================

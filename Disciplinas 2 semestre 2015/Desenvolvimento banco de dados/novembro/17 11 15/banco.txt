@@ -1,0 +1,2 @@
+select c.nome_cliente from dono_conta c natural full outer join dono_emprestimo e
+where numero_conta is null or numero_emprestimos is null;

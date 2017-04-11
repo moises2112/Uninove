@@ -1,0 +1,91 @@
+CREATE TABLE funcionario(
+matricula number(4) constraint fun_mat_pk primary key,
+nome varchar2(20) constraint fun_nome_nn not null,
+salario number(8,2),
+dt_admissao date constraint fun_dt_nn not null,
+comissao number(6,2) constraint fun_com_nn not null);
+
+insert into funcionario values(1,'Claudia',5000,'10/10/2010',0);
+
+insert into funcionario values(2,'Silvio',5680,'07/12/2000',25);
+
+insert into funcionario values(3,'Vanessa',4598,'23/08/2011',50);
+
+insert into funcionario values(4,'Ricardo',2500,'01/04/2000',75);
+
+insert into funcionario values(5,'Moises',null,'01/04/2000',100);
+
+
+select nome, Length(nome) "Tamanho" from funcionario;
+
+select nome, initcap(nome), upper(nome), lower(nome) from funcionario;
+
+select dt_admissao,dt_admissao+250 from funcionario;
+
+
+select nome, salario, NVL(comissao,0) PORCENTAGEM, salario* NVL(comissao,0)/100 ComissAo from funcionario where salario>10;
+
+select nome,sysdate,dt_admissao, sysdate-dt_admissao from funcionario where matricula<4;
+
+select nome,sysdate,dt_admissao, round(sysdate-dt_admissao) from funcionario where matricula<4;
+
+select nome, SUBSTR(nome,3,2) from funcionario;
+
+select nome, SUBSTR(nome,3) from funcionario;
+
+select next_day(sysdate,'terca') from dual;
+
+
+select dt_admissao, next_day(dt_admissao,'terca') from funcionario;
+
+select last_day(sysdate) from dual;
+
+select dt_admissao,to_char(dt_admissao,'yyyy') from funcionario;
+
+select dt_admissao,to_char(dt_admissao,'month') from funcionario;
+
+select dt_admissao,to_char(dt_admissao,'day') from funcionario;
+
+
+select dt_admissao,to_char(sysdate,'hh24') from funcionario;
+
+select dt_admissao,to_char(sysdate,'mi') from funcionario;
+
+select dt_admissao,to_char(sysdate,'ss') from funcionario;
+
+
+
+select nome, to_char (dt_admissao,'fmdd month yyyy') from funcionario where matricula>=2;
+
+
+select nome, to_char (dt_admissao,'fmdd "de" month "de" yyyy') from funcionario where matricula>=2;
+
+
+select matricula ||'-'||  nome from funcionario;
+
+select matricula ||'-'||  nome CONTATENAR from funcionario;
+
+select avg (salario)media,max(salario)maior,min(salario)menor,sum(salario)somatoria from funcionario;
+
+select count(nome) from funcionario;
+
+select count(*) quant_funcionario from funcionario;
+
+select count(distinct comissao) from funcionario;
+
+
+
+select uf, count(uf) from cliente where upper(uf)='SP';
+select uf, count(uf) total from cliente group by uf;
+select uf, count(uf) total from cliente group by uf having count(uf)>2;
+select uf, count(uf) total from cliente where cidade like 'A%' group by uf having count(uf)>2;
+select nome from cliente where cidade=(select cidade from cidade from cliente where nome='felipinho');
+
+
+select nome from funcionario where salario=(select max(salario) from funcionario);
+select nome, salario from funcionario order by salario desc;
+select nome, salario from funcionario where salario< (select avg(salario) from funcionario);
+
+
+select nome,matricula from funcionario where salario>any(select salario from funcionario where n_depto=10);
+select nome,matricula from funcionario where salario>all(select salario from funcionario where n_depto=10);

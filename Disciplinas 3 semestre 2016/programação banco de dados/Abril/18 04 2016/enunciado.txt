@@ -1,0 +1,8 @@
+criar um banco pl/sql para preencher a coluna resultado
+
+se o aluno obteve media igual ou maior que 70 e suas faltas não ultrapassarem, 25% da carga horaria da disciplina, o resultado será "aprovado"
+
+se o aluno obteve media, entre 40 e 70 da carga horaria da disciplina, o resultado será "exame"
+
+para os demais o resultado é "reprovado"
+

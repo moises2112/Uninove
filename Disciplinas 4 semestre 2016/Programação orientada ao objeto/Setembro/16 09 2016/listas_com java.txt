@@ -1,0 +1,116 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication6;
+    import java.util.ArrayList;
+    import java.util.Collections;
+    import java.util.List;
+/**
+ *
+ * @author ERNESTO
+ */
+public class JavaApplication6 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        
+        //criar o arraylist 1
+        ArrayList<String> l1 = new ArrayList<String> ();
+        
+        //criar a lista 2, que receberá uma cópia do arraylist
+        List<String> l2 = new ArrayList<String>();
+        
+        //cria um array lsit de objetos
+        ArrayList<NovoClass> nv = new ArrayList<NovoClass>();
+
+        //instancia o obj 1
+        NovoClass nv1 = new NovoClass();
+        //add um nome
+        nv1.setNome("ERNESTO");
+        
+        //instancia o obj 2
+        NovoClass nv2  =new NovoClass();
+        nv2.setNome("Gilclenildo");
+        
+        //adiicona os objetos 1 e 2 na lista de objetos
+        nv.add(nv2);
+        nv.add(nv1);
+        
+        //mostra o nome inserido no objeto do indice 0 da lista
+        System.out.println("bla bla : "+ nv.get(0).getNome());
+        
+        //adiicona items à lista de String
+        l1.add("ERNESTO" );
+        l1.add("kkk");
+        l1.add("pppp");
+        l1.add("ERNESTO" );
+        
+        //copia o l1 para o l2
+        l2.addAll(l1);
+        
+        //verifica se um elemento existe na l1
+        if(l1.contains("kkk"))
+            System.out.println("OK");
+        else
+            System.out.println("NOK");
+        
+        //mostra o elemento pelo indice
+        System.out.println(l1.get(0));
+        
+        //mostra o indice do ultimo elemento encontrado conrforme valor passado
+        System.out.println(l1.lastIndexOf("ERNESTO"));
+        
+        //mostra o indice do primeiro elemento encontrado conrforme valor passado
+        System.out.println(l1.indexOf("ERNESTO"));
+        
+        
+       //verifica se a lista está vazia
+         if (l1.isEmpty())
+             System.out.println("Não Tem dados");
+         else
+             System.out.println("Tem dados");
+         
+         
+        //remove o item pelo indoce
+        l1.remove(0);
+        
+        //remove o item pelo elemento
+        l1.remove("ERNESTO");
+        
+        //for melhorado para ler a lista
+        for(String i : l1)
+            System.out.println(i);
+        
+        //mostra todos itens da lista 1 e 2 
+        System.out.println("\n \n" + l1);
+        System.out.println("\n \n" + l2);
+        
+        //remove todos elementos de l2 iguais aos elementos de l1
+        l2.removeAll(l1);
+        
+        //insere um valor num indice especificado, o indice deve existir
+        l1.set(0, "Euclides");
+        l1.add("Anastacia");
+        
+        //mostra qtos itens tem
+        System.out.println("tamanho de L1: " + l1.size()); 
+        System.out.println("\n \n" + l1);
+        
+        //ordena os itens
+        Collections.sort(l1);
+        
+        System.out.println("\n \n" + l1);
+        
+        //mostra os elementos conforme indice 2 e qtd 3 no exemplo
+        System.out.println("sublist  = "+l1.subList(2, 3));
+        
+        System.out.println("\n \n" + l2);
+    }
+    
+    
+}

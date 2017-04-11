@@ -1,0 +1,30 @@
+create table cotacao(
+codmod number(10) primary key,
+moeda varchar2(50),
+valor number(9,2),
+data date);
+
+insert into cotacao values(1,'Dolar comercial',3.6223,'04/04/2016');
+insert into cotacao values(2,'Euro',4.1216,'04/04/2016');
+insert into cotacao values(3,'libra',5.1619,'04/04/2016');
+insert into cotacao values(4,'Peso argentino',0.2456,'04/04/2016');
+insert into cotacao values(5,'Real',1.00,'04/04/2016');
+
+set serveroutput on
+
+DECLARE
+	opcao_1 number(10):=&opcao_1;
+	opcao_2 number(10):=&opcao_2;
+	v_valor number(9,2):=&v_valor;
+	resultado number(9,2);
+	cot_1   number(9,2);
+	cot_2   number(9,2);
+	nome_1  varchar2(50);
+	nome_2  varchar2(50);
+BEGIN
+	select moeda, valor into nome_1,cot_1 from cotacao where codmod=opcao_1;
+	select moeda, valor into nome_2,cot_2 from cotacao where codmod=opcao_2;
+	resultado:=((cot_1/cot_2)*v_valor);
+	dbms_output.put_line(v_valor||' em '||nome_1||' convertido para '||nome_2||' e igual a '||resultado);
+end;
+/

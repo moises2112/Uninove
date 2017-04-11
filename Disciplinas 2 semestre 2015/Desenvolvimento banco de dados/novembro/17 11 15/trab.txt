@@ -1,0 +1,60 @@
+Create Table Dept (
+Deptno 	Number(2)  Primary Key, 
+Dname	Varchar2(14),
+Loc	Varchar2(13) );
+
+insert into Dept values(10,'Pesquisa','SP');
+insert into Dept values(20,'Contabilidade','RJ');
+insert into Dept values(30,'Sales','MG');
+insert into Dept values(40,'Research','GO');
+insert into Dept values(50,'Accounting','BH');
+
+
+Create Table Emp (
+Empno	 Number(4)  Primary Key,
+Ename	 Varchar2(10),
+Job	 Varchar2(9),
+Mgr	 Number(4),
+Hiredate Date,
+Sal	 Number(7,2), 
+Comm	 Number(7,2),
+Deptno	 Number(2)  Constraint fk_dep References Dept(Deptno) );
+
+
+insert into Emp values(1,'Moises','Program.',21,'19/01/2015',4000.00,1000.00,10);
+insert into Emp values(2,'Smith','Program.',22,'09/07/2014',200.00,700.00,10);
+insert into Emp values(3,'Matheus','Analista',21,'25/04/2015',4000.00,900.00,50);
+insert into Emp values(4,'Jorge','Analista',22,'29/03/2013',2500.00,800.00,50);
+insert into Emp values(5,'Ericson','Contador',23,'20/02/2012',2700.00,500.00,20);
+insert into Emp values(6,'Henry','Contador',23,'22/06/2013',3000.00,550.00,20);
+insert into Emp values(7,'Gabriel','Vendedor',24,'20/01/2010',1100.00,1500.00,30);
+insert into Emp values(8,'Victor','Vendedor',24,'05/07/2011',999.00,1100.00,30);
+insert into Emp values(9,'Bianca','Design',25,'20/01/2013',1200.00,1300.00,40);
+insert into Emp values(10,'Alan','Design',25,'15/10/2014',999.00,1200.00,40);
+
+select ename from emp where sal>1200 order by ename desc;
+
+select ename from emp where deptno=10;
+
+select ename from emp where sal between 1000 and 3000 and deptno=30;
+
+select ename from emp where deptno in (select deptno from dept where upper(dname)='CONTABILIDADE');
+
+select ename from emp where sal>(select sal from emp where upper(ename)='SMITH');
+
+delete from emp where deptno in (select deptno from dept where upper(dname)='PESQUISA');
+
+update emp set sal=sal*0.9
+where sal>3000;
+
+update emp set sal=sal*1.1
+where deptno in(select deptno from dept where upper(dname)='PESQUISA');
+
+select ename from emp where sal between 1000 and 3000 and deptno=
+(select deptno from dept where upper(dname)='RESEARCH');
+
+select ename from emp where sal >all(select sal from emp where deptno=(select deptno from dept where upper(dname)='ACCOUNTING’));
+
+select ename from emp where sal <any(select sal from emp where deptno=(select deptno from dept where upper(dname)='SALES’));
+
+:update emp set deptno =(select deptno from dept where upper(dname)='ACCOUNTING') where upper(ename)='SMITH';

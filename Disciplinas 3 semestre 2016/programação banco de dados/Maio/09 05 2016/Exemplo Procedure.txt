@@ -1,0 +1,27 @@
+Create or replace procedure soma
+
+(P_1 in number,
+ P_2 in number,
+ P_T out number) is
+
+Begin 
+
+P_T:=P_1+P_2;
+DBMS_OUTPUT.PUT_LINE(P_1||'+'||P_2||'='||P_T);
+end soma;
+/
+
+DECLARE
+
+V_1 NUMBER:=1;
+V_2 NUMBER:=2;
+V_T NUMBER;
+
+BEGIN
+
+soma(V_1,V_2,V_T);
+end;
+/
+
+==================================================================================================================================
+

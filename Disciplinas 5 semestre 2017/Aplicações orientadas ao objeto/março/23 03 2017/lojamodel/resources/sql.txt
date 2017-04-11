@@ -1,0 +1,38 @@
+create table contatos (
+  id_cont BIGINT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255),
+  email VARCHAR(255),
+  dataNascimento DATE,
+  primary key (id_cont)
+);
+
+
+create table enderecos(
+  id_end BIGINT NOT NULL AUTO_INCREMENT,
+  rua VARCHAR(100),
+  num int(7),
+  cidade VARCHAR(50),
+  estado VARCHAR(50),
+  cep int(8),
+  id_cont BIGINT NOT NULL,
+  primary key (id_end)
+);
+
+CREATE TABLE contatos_enderecos (
+   id_cont BIGINT NOT NULL
+   id_end BIGINT NOT NULL,
+   PRIMARY KEY  (id_cont,id_end),
+   CONSTRAINT fk_endcont2 FOREIGN KEY (id_cont) REFERENCES contatos (id_cont),
+   CONSTRAINT fk_contend2 FOREIGN KEY (id_end) REFERENCES enderecos (id_end);
+);
+ALTER TABLE enderecos
+ADD CONSTRAINT fk_endcont FOREIGN KEY (id_cont) REFERENCES contatos (id_cont);
+
+ALTER TABLE contatos
+ADD CONSTRAINT fk_contend FOREIGN KEY (id_end) REFERENCES enderecos (id_end);
+
+
+select * from contatos;
+select * from enderecos;
+drop table contatos;
+drop table enderecos;

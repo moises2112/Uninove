@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Exemplos</title>
+	<script type="text/javascript">
+		function load(){
+			alert("Ben vindo");
+		}
+		function finaliza(){
+			alert("Até logo");
+		}
+		function upperCase(x){
+			var y = document.getElementById(x).value;
+			document.getElementById(x).value = y.toUpperCase();
+		}
+		function lowerCase(x){
+			var y = document.getElementById(x).value;
+			document.getElementById(x).value = y.toLowerCase();
+		}
+		function executaEventoOnclick( ){
+			
+			alert("Voce clicou no evento onclick");
+			window.document.bgColor = "red";
+			//window.document.body.style.backgroundColor = "red";
+		}
+		function showMsg(){
+			alert("Proibido copiar esse texto")		
+		}
+		function obrigado(){
+			var nomeV = document.getElementById('nome').value;
+			alert(nomeV);
+		}
+		function trocaImagem(obj,ido){
+			obj.src=ido;
+		}
+		function limpaCaixa(obj){
+			obj.value="Voce esta selecionando este campo"
+		}
+	</script>
+</head>
+<body onload="load()" onunload="finaliza()">
+	<div>
+		<h1>Olá mundo</h1>
+		<a href="http://www.google.com">google</a>
+	</div>
+	<div>
+		Nome: <input type="text" id="fname" onchange="upperCase(this.id)"/>
+		Sobrenome: <input type="text" id="fsobrename" onblur="lowerCase(this.id)"/>
+		Idade: <input type="text" id="fidade"/>
+		
+	</div>
+	<div>
+		<form>
+			<input type="button" value="Pulsame" onclick="executaEventoOnclick();">
+		</form>
+	</div>
+	<div>
+		Select text:<input type="text" value="Hello world" onselect="showMsg()">
+	</div>
+	<div>
+		<form name="dados"  onsubmit="obrigado()">
+		Digite seu nome:
+		<input type="text" id="nome">
+		<input type="submit" value="Enviar">
+			
+		</form>
+	</div>
+		
+	<div>
+		<img src="imagem2.png" onmouseover="trocaImagem(this,'Imagem1.png')" onmouseout="trocaImagem(this,'Imagem2.png')" />
+	</div>
+	<div>
+		Digite signo: <input type="text" onfocus="limpaCaixa(this)">
+	</div>
+</body>
+</html>

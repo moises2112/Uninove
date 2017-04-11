@@ -1,0 +1,71 @@
+Moises da Silva		RA:3015106481
+Matheus Blimblien	RA:3015106855
+===============================================================================================================
+
+create table produto (
+cod_prod number(10) primary key,
+descricao varchar2(30),
+v_inicial number(10,2));
+
+create table orcamento (
+cod_orc number(10) primary key,
+nome varchar2(30),
+cpf varchar2(18),
+cod_prod number(10),
+qtd_parc number(5),
+v_juros number(10,2),
+valor_parcela number(10,2),
+parcela_final number(10,2));
+
+insert into produto values(1,'GELADEIRA',2500.00);
+insert into produto values(2,'FOGAO',1200.00);
+insert into produto values(3,'TV',5000.00);
+insert into produto values(4,'SOFA',2850.00);
+insert into produto values(5,'ARMARIO',10980.00);
+
+alter table orcamento add constraint cod_prod_FK
+     foreign key (cod_prod)
+     references produto On Delete Cascade;
+
+
+create sequence cod_orc;
+
+
+set serveroutput on
+
+DECLARE
+
+prod_sj number(10,2);
+n_prod varchar2(30);
+o_nome varchar2(30):='&nome';
+c_prod number(10):=&codigo;
+v_total number(10,2):=0;
+v_prod number(10,2):=&compra;
+q_parc number(10):=0;
+v_total2 number(10,2);
+v_aux number(10,2);
+
+BEGIN
+	select descricao into n_prod from produto where cod_prod=c_prod;
+	select v_inicial into v_total from produto where cod_prod=c_prod;
+	select v_inicial into prod_sj from produto where cod_prod=c_prod;
+	select v_inicial into v_total2 from produto where cod_prod=c_prod;
+
+	while v_total>v_prod
+	loop
+		v_aux:=(v_total*0.02);
+		v_total:=(v_total+v_aux);
+		v_total2:=(v_total2+v_aux);
+		v_total:=(v_total-v_prod);
+		q_parc:=(q_parc+1);
+	end loop;
+	q_parc:=(q_parc+1);
+	insert into orcamento values(cod_orc.nextval,o_nome,'123.456.789-53',c_prod,q_parc,v_total2,v_prod,v_total);	
+	dbms_output.put_line('NOME: '||n_prod||'--valor do produto: '||prod_sj||'--valor final com juros: '||v_total2||'--quantidade de prestacoes: '||q_parc||'--valor das prestacoes: '||v_prod||'--ultima parcela: '||v_total);
+EXCEPTION
+	when no_data_found then
+		dbms_output.put_line('nao ha nenhum produto com esse codigo');
+	when others then
+		dbms_output.put_line('erro desconhecido');
+end;
+/

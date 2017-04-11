@@ -1,0 +1,69 @@
+CREATE TABLE funcionario(
+matricula number(4) constraint fun_mat_pk primary key,
+nome varchar2(20) constraint fun_nome_nn not null,
+salario number(8,2),
+dt_admissao date constraint fun_dt_nn not null,
+comissao number(6,2) constraint fun_com_nn not null,
+deptno number(4) constraint fun_deptno_fk references departamento);
+
+insert into funcionario values(1,'Claudia',5000,'10/10/2010',0,10);
+
+insert into funcionario values(2,'Silvio',5680,'07/12/2000',25,20);
+
+insert into funcionario values(3,'Vanessa',4598,'23/08/2011',50,20);
+
+insert into funcionario values(4,'Ricardo',2500,'01/04/2000',75,30);
+
+insert into funcionario values(5,'Moises',null,'01/04/2000',100,30);
+
+CREATE TABLE departamento(
+deptno number(4) constraint dep_deptno_pk primary key,
+nome_dept varchar2(30) constraint dep_nodep_nn not null,
+matger number(4) constraint dep_matger_nn not null,
+local varchar2(30) constraint dep_loc_nn not null);
+
+insert into departamento values(10,'contabilidade',5,'sto_amaro');
+
+insert into departamento values(20,'recursos_humanos',1,'sao_paulo');
+
+insert into departamento values(30,'vendas',11,'rio_janeiro');
+
+select nome, matricula from funcionario salario>all(select salario from funcionario where deptno=
+(select detpno from departamento where nome_dept='contabilidade'));
+
+select nome, matricula from funcionario where deptno in (select deptno from departamento 
+where local='sto.amaro');
+
+select nome, matricula from funcionario where deptno not in (select deptno from departamento 
+where local='sto_amaro');
+
+select nome, matricula from funcionario where exists(select deptno from departamento
+ where local='sto_amaro' and deptno=deptno);
+
+select f.nome,f.matricula from funcionario f inner join departamento d on(f.matricula=d.matger);
+
+
+create table cargo(
+codcargo char(2) primary key,
+nomecargo varchar(10) not null,
+valorcargo number(6,2) not null);
+
+insert into cargo values('C1','caixa',800.00);
+insert into cargo values('C2','vendedor',1200.00);
+insert into cargo values('C3','gerente',2400.00);
+
+create table funcionario (
+matricula number(3) primary key,
+nomefuncionario varchar(15) not null,
+codcargo char(2),
+foreign key (codcargo) references cargo);
+
+insert into funcionario values(100,'joao','C1');
+insert into funcionario values(110,'maria','C2');
+insert into funcionario values(120,'carlos','C3');
+insert into funcionario values(130,'tadeu',null);
+
+select * from funcionario, cargo;
+select * from funcionario natural join cargo;
+select * from funcionario f inner join cargo c on(f.codcargo = c.codcargo);
+select * from funcionario inner join cargo on(funcionario.codcargo = cargo.codcargo);

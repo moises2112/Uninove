@@ -1,0 +1,60 @@
+Declare
+	v_aux number(2):=0;
+Begin
+	for v_contador in 1..10
+	loop
+		v_aux := v_aux+1;
+		dbms_output.put_line (v_aux);
+
+	end loop;
+end;
+/
+================================================================================================
+Declare
+	v_aux number(2):=0;
+Begin
+	for v_contador in 1..10
+	loop
+		v_aux := v_aux+1;
+		if mod(v_aux,2)!=0
+			then dbms_output.put_line (v_aux);
+		end if;
+
+	end loop;
+end;
+/
+================================================================================================
+Declare 
+	v_1 number(2):=&variavel;
+	v_2 varchar2(5);
+Begin
+	if mod(v_1,2)=0
+		then v_2:='par';
+	else v_2:='impar';
+	end if;
+	dbms_output.put_line('o numero e '||v_2);
+end;
+/
+================================================================================================
+Declare
+	v_aux number(2):=0;
+Begin
+	while v_aux<10
+	loop
+		v_aux := v_aux+1;
+		dbms_output.put_line(v_aux);
+	end loop;
+end;
+/
+================================================================================================
+Declare 
+	v_aux number(2):=0;
+Begin
+	for v_contador in 1..15
+	loop
+		v_aux := v_aux+1;
+		dbms_output.put_line(v_aux);
+		exit when v_contador=10;
+	end loop;
+end;
+/

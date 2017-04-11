@@ -1,0 +1,7 @@
+localhost:8082
+goo.gl/JUU4Ak
+https://www.dropbox.com/sh/ga9sat8tzs8y945/AAC-Uc93J_6eLMZYPPUD9Kdoa?dl=0
+E:\Executaveis liberados\PROJETOS\lojamodel\bancodedados\db.h2.db
+jdbc:h2:bancodedados/db
+jdbc:h2:E:\Executaveis liberados\PROJETOS\lojamodel\bancodedados\db
+goo.gl/eFYwiC

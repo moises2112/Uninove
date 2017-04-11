@@ -1,0 +1,51 @@
+create table cliente (
+codigo_cliente number (4) constraint
+cli_cod_pk primary key,
+nome_cliente varchar2(20)
+constraint cli_nom_nn not null
+constraint cli_nom_un unique);
+
+
+/*incluir colunas e restrições*/
+alter table cliente add cidade varchar2(15);
+alter table cliente add uf char (2) constraint cli_uf_nn not null;
+alter table cliente add constraint cli_uf_ck check (uf in ('RJ','MG','SP'));
+
+/*alterar restrição para tipo not null*/
+alter table cliente modify cidade not null;
+
+
+desc cliente
+
+
+/*alterar limite de caracteres, nao altera caso um campo ja preenchido possua mais caracteres*/
+
+alter table cliente modify cidade varchar2(20);
+
+/*deleta colunas e restrições especificadas*/
+
+alter table cliente drop column cidade;
+alter table cliente drop constraint cli_nom_un;
+
+
+
+/*habilita ou desabilita restrição*/
+
+alter table cliente disable constraint cli_cod_pk;
+alter table cliente enable constraint cli_cod_pk;
+
+/*renomeia coluna*/
+
+alter table cliente rename column uf to estado;
+
+/*deleta tabela e as restriçoes que estao nela*/
+alter table departamento cascade constraints;
+
+/*informa os nomes das restriçoes, os tipos, e a quais tabelas pertencem*/
+select constraint_name, constraint_type, table_name
+from user_constraints
+where table_name = 'CLIENTE';
+
+/*insere dados/linhas em sua tabela*/
+insert into cliente (nome_cliente, codigo_cliente,uf) values ('vanessa',9999,'sp');
+insert into cliente values (10,'Gustavo','Mogi das Cruzes','MG');

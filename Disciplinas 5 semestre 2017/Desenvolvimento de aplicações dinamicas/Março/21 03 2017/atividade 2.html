@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Atividade 1</title>
+<script>
+	function repartir(){
+		var completo= document.getElementById('completo');
+		var nome= document.getElementById('nome');
+		var sobrenome= document.getElementById('sobrenome');
+		
+		var partes = completo.value.split(" ");
+		if(partes.length<2){
+			nome.focus();
+			alert('Favor preencher nome e sobrenome');
+			
+			return;
+		}
+		nome.value = partes[0];
+		sobrenome.value = partes[1];
+	}
+	
+	function maiusculo(id){
+		var campo=document.getElementById(id);
+		campo.value = campo.value.toUpperCase();
+	}
+	
+	function minusculo(campo){
+		var c = document.getElementById(campo);
+		c.value = c.value.toLowerCase();
+	}
+</script>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div>
+	<h1>Exemplo método split</h1>
+		<input type ="text" id="completo" onblur="repartir();" value="Nome e sobrenome"/>
+		
+		<input type ="text" id="nome" />
+		
+		<input type ="text" id="sobrenome" />
+	</div>
+	<hr>
+	<div>
+	<h1>Exemplo método lower & uppercase</h1>
+	
+		Nome:
+		<input type="text" id="name" onkeypress="maiusculo('name')"/>
+		E-mail:
+		<input type="text" id="email" onkeyup="minusculo('email')"/>
+	
+		
+	</div>
+
+</body>
+</html>

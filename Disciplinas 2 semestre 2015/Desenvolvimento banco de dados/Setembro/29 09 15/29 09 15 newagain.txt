@@ -1,0 +1,40 @@
+create table newagain(
+first number(4) constraint pk_newa
+primary key,
+second date default sysdate,
+third varchar(20) not null,
+four number(7,2));
+
+
+insert into newagain values (1111,
+'10/10/2004','aaaa',813.55);
+
+insert into newagain values(2222,null,'bbbb',814.55);
+
+insert into newagain (first,third) values (3333,'cccc');
+
+select * from newagain;
+
+
+
+delete newagain
+where second <=sysdate
+or third='cccc';
+
+update newagain
+set four=four*1.06;
+
+select * from newagain;
+
+update newagain
+set four=(case
+	 when four<=10000
+	 then four*1.05
+	 else four*1.06
+	 end)+100,
+third='moises'
+where first=2222;
+
+select * from newagain;
+
+  	
