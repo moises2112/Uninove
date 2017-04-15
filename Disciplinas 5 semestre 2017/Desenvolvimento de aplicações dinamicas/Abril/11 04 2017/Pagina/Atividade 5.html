@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$('#enviar').click(function(){
+			if ($('#nome').val() == ""||
+				$('#email').val() == ""||
+				$('#endereço').val() == ""||
+				$('#cidade').val() == ""||
+				$('#Artigo').val() == ""||
+				$('#Dicas').val() == ""||
+				$('#Video-Aula').val() == ""||
+				$('#Exemplos').val() == ""||
+				$('#txt').val() == ""||
+				$('#comentario').val() == "")
+				{
+				alert("Algum campo ficou vazio")
+				return ;
+			}
+			else
+				alert("Formulário Entregue")
+		});
+	});
+</script>
+
+	<title>Validação formulario</title>
+</head>
+<body>
+	<form>
+		<p>Nome: <input type="text" id="nome" ></p>
+		<p>E-mail: <input type="text" id="email" ></p>
+		<p>Endereço: <input type="text" id="endereço" ></p>
+		<p>Cidade: <input type="text" id="cidade" > 
+		<select>
+			<option value="RJ"> RJ</option>
+			<option value="SP"> SP</option>
+			<option value="BH"> BH</option>
+
+		</select>
+		</p> 
+		<p>Conteudo preferido: <input type="checkbox" id="Artigo" value="Artigo"> Artigo
+		 <input type="checkbox" id="Dicas" value="Dicas"> Dicas
+		 <input type="checkbox" id="Video-Aula" value="Video-Aula"> Video-Aula
+		 <input type="checkbox" id="Exemplos" value="Exemplos"> Exemplos</p>
+
+		<p>Assinar News? <input type="radio" name="group1" value="Sim"> Sim <input type="radio" name="group1" value="Não"> Não </p>
+		<p>Anexo: <input type="text" id="txt"><input type="button" id="anexobt" value="browse.."  ></p>
+		<p>Comentário: <textarea id="comentario" rows="15" cols="100" ></textarea></p>
+		<input type="submit" id="enviar" value="enviar">  <input type="button" id="apagar" value="limpar"> 
+
+
+	</form>
+</body>
+</html>
