@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	
+	
+	
+
+	
+	$('#marca').on('change', function(){
+		var value = $( "#marca option:selected").val();
+		$('#modelo option').css('display', 'none');
+		$('.' + value).css('display', 'block');
+		$('#modelo').val($('.' + value).eq(0).val())
+	});
+
+	$('#calcular').click(function(){
+		var valor1 = parseInt($("input:radio[name=group1]:checked").val());
+		var valor2 = 0;
+		camposMarcados = new Array();
+		$("input[type=checkbox][name='opcionais']:checked").each(function(){
+			valor2+= parseInt(($(this).val()));
+		});
+		var total=valor1+valor2;
+		$("#respmarca").val($("#marca option:selected").val());
+		$("#respmodelo").val($( "#modelo option:selected").val());
+		$("#respvalor").val('R$ '+total+",00");
+	});
+
+/*	$('#Limpar').click(function(){
+	
+		$('input:text	').val('');
+		
+		$("input:radio[name=group1]").removeAttr('checked');
+		
+		
+		$("input[type=checkbox][name='opcionais']:checked").each(
+        function() {
+            if ($(this).prop("checked")) 
+                $(this).prop("checked", false);
+			
+		});
+	});*/
+	
+});
+</script>
+
+<title>Atividade</title>
+</head>
+<body>
+<form>
+	<p>Marca:
+	<select id="marca">
+			<option value="Ford"> Ford</option>
+			<option value="Fiat"> Fiat</option>
+			<option value="Ferrari"> Ferrari</option>
+	</select>
+	Modelo:
+	<select id="modelo">
+			<option value="EcoSport " class="Ford">EcoSport </option>
+			<option value="Palio " class="Fiat"> Palio </option>
+			<option value="F599 GTO" class="Ferrari"> F599 GTO</option>
+	</select>
+	</p>
+	<p>Motor:</p>
+	<p><input type="radio" name="group1" value="24000,00"> 1.0 &emsp;R$   <label type="text">24,000</label></p>
+	<p><input type="radio" name="group1" value="26000,00"> 1.6 &emsp;R$   <label type="text">26,000</label></p>
+	<p><input type="radio" name="group1"  value="28000,00" checked> 1.8 &emsp;R$   <label type="text">28,000</label></p>
+	
+	<p>Opcionais:</p>
+	<p><input type="checkbox" name="opcionais" id="direcaohid" value="1500,00"> Direção Hidráulica  R$ 1,500</p>
+	<p><input type="checkbox" name="opcionais" id="trioelet" value="400">Trio Elétrico R$ 400</p>
+	<p><input type="checkbox" name="opcionais" id="airbag" value="800"> Air Bag   R$ 800</p>
+	<p><input type="checkbox" name="opcionais" id="freioabs" value="600"> Freio ABS R$ 600</p>
+	<p>Marca:<input type="text" id="respmarca">Modelo:<input type="text" id="respmodelo">Valor Total:<input type="text" id="respvalor"></p>
+	<input type="button" id="calcular" value="Calcular Valor Total"> <input type="reset" id="Limpar" value="Limpar"> 
+</form>
+</body>
+</html>

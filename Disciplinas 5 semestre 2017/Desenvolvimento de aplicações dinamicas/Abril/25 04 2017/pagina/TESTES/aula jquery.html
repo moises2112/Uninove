@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>aula jquery</title>
+<script src="jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#mostrar').click(function(){
+			$('showhide').show('slow');
+		
+		});
+		$('#esconder').click(function(){
+			$('showhide').hide('slow');
+		});
+		
+		$('#mostraresconder').click(function(){
+			$('#toggle').toggle('slow');
+		});
+	});
+</script>
+
+</head>
+<body>
+	<h1>Exemplo Evento show e hide</h1>
+	<input id="mostrar" type="button" value="Mostrar"/>
+	<input id="esconder" type="button" value="Esconder"/>
+	<div id="showhide" style="width: 1000px; height: 100px;background: red;display: none">
+	</div>
+	
+	
+	<h1>Exemplo Evento toggle</h1>
+	<input id="mostraresconder" type="button" value="Mostrar/Esconder"/>
+	<div id="toggle" style="width: 1000px; height: 100px;background: red;display: none">
+	</div>
+	
+	<h1>Exemplo Evento Slide</h1>
+	<input id="mostraresconder" type="button" value="Mostrar/Esconder"/>
+	<div id="toggle" style="width: 1000px; height: 100px;background: red;display: none">
+	</div>
+	
+	<h1>Exemplo Evento toggle</h1>
+	<input id="mostraresconder" type="button" value="Mostrar/Esconder"/>
+	<div id="toggle" style="width: 1000px; height: 100px;background: red;display: none">
+	</div>
+	
+	<h1>Exemplo Evento toggle</h1>
+	<input id="mostraresconder" type="button" value="Mostrar/Esconder"/>
+	<div id="toggle" style="width: 1000px; height: 100px;background: red;display: none">
+	</div>
+</body>
+</html>

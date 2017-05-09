@@ -1,0 +1,106 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema uninove
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema uninove
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `uninove` ;
+USE `uninove` ;
+
+-- -----------------------------------------------------
+-- Table `uninove`.`cachorro_has_match`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `uninove`.`cachorro_has_match` (
+  `cachorro_idcachorro` INT NOT NULL,
+  `match_idmatch` INT NOT NULL,
+  PRIMARY KEY (`cachorro_idcachorro`, `match_idmatch`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `uninove`.`cachorro`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `uninove`.`cachorro` (
+  `idcachorro` INT NOT NULL AUTO_INCREMENT,
+  `raça` VARCHAR(45) NOT NULL,
+  `sexo` VARCHAR(4) NOT NULL,
+  `nome` VARCHAR(45) NOT NULL,
+  `idade` INT NOT NULL,
+  `foto_perfil` INT NULL,
+  PRIMARY KEY (`idcachorro`))
+ENGINE = InnoDB;
+
+CREATE UNIQUE INDEX `idcachorro_UNIQUE` ON `uninove`.`cachorro` (`idcachorro` ASC);
+
+
+-- -----------------------------------------------------
+-- Table `uninove`.`cachorro_has_perfil_saude`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `uninove`.`cachorro_has_perfil_saude` (
+  `cachorro_idcachorro` INT NOT NULL,
+  `perfil_saude_idhistorico` INT NOT NULL,
+  PRIMARY KEY (`cachorro_idcachorro`, `perfil_saude_idhistorico`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `uninove`.`match`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `uninove`.`match` (
+  `idmatch` INT NOT NULL AUTO_INCREMENT,
+  `isliked` TINYINT NOT NULL,
+  PRIMARY KEY (`idmatch`))
+ENGINE = InnoDB;
+
+CREATE UNIQUE INDEX `idmatch_UNIQUE` ON `uninove`.`match` (`idmatch` ASC);
+
+
+-- -----------------------------------------------------
+-- Table `uninove`.`perfil_saude`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `uninove`.`perfil_saude` (
+  `idhistorico` INT NOT NULL,
+  `vacina a` TINYINT NULL,
+  `vacina b` TINYINT NULL,
+  `vacina c` TINYINT NULL,
+  `vacina d` TINYINT NULL,
+  PRIMARY KEY (`idhistorico`))
+ENGINE = InnoDB;
+
+CREATE UNIQUE INDEX `idhistorico_UNIQUE` ON `uninove`.`perfil_saude` (`idhistorico` ASC);
+
+
+-- -----------------------------------------------------
+-- Table `uninove`.`usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `uninove`.`usuario` (
+  `id_usuario` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `logradouro` VARCHAR(45) NOT NULL,
+  `numero` VARCHAR(45) NOT NULL,
+  `cep` INT NOT NULL,
+  `bairo` VARCHAR(45) NOT NULL,
+  `data_nascimento` DATE NOT NULL,
+  `sexo` VARCHAR(4) NOT NULL,
+  `senha` VARCHAR(255) NOT NULL,
+  `cachorro_idcachorro` INT NOT NULL,
+  PRIMARY KEY (`id_usuario`, `cachorro_idcachorro`))
+ENGINE = InnoDB;
+
+CREATE UNIQUE INDEX `id_usuario_UNIQUE` ON `uninove`.`usuario` (`id_usuario` ASC);
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
