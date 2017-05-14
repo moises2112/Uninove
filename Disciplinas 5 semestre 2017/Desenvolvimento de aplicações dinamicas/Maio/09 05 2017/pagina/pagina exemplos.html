@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+
+    $('#dispararAtributo').click(function(){
+        var titulo = $('h1').attr("title");
+		$('#result').text("o titulo do h1 eh:" +titulo);
+		
+		var caminho = $('#path').val();
+		
+		$('img').css('display','block').attr({
+		
+			src: caminho,
+			alt:"rinegan",
+			title:"moises voce e um bosta"
+			}
+		)
+		    });
+
+		$('.remover').click(function(){
+			$('img').removeAttr('src');
+		
+		});
+});
+</script>
+</head>
+<body>
+
+<input type="button" value="Atributo" id="dispararAtributo"/>
+
+<h1 title="Matheus Ferraz">uninove </h1>
+<div id="result"></div>
+
+
+<h1> Exemplo 2</h1>
+Caminho : <input type="text" id="path" size="80"/>
+
+
+<img style="display:none"/> 
+
+
+<h1> exemplo 3 </h1>
+<input type="button" value="Remover imagem" class="remover"/>
+
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+	.stylediv{
+		border-style:solid;
+	    border-width: 5px;
+		border-color: red;
+		width:150px;
+		height:150px;
+	}
+</style>
+<script>
+$(document).ready(function(){
+
+    $('#RemoverDiv').click(function(){
+		
+		$('.stylediv').removeClass('stylediv');
+	});
+
+	$('#RemoverDiv1').click(function(){
+		
+		$('#exemplo2').css(
+		{
+			"font-family":"Colonna MT",
+			"color":"red",
+			"font-size": "30px"
+		});
+		
+	});
+
+	$('#RemoverDiv2').click(function(){
+		
+		$('#exemplo2').addClass('stylediv');
+		
+	});
+	$('#RemoverDiv3').click(function(){
+		$('#exemplo2').removeClass('stylediv');
+	});
+});
+</script>
+</head>
+<body>
+
+<h1> Exemplo 1</h1>
+
+<div class="stylediv"></div>
+<div class="stylediv"></div>
+<input type="button" value="Remover" id="RemoverDiv"/>
+
+
+<h1> Exemplo 2 </h1>
+
+<div id="exemplo2">
+<p>Testando</p>
+</div>
+<input type="button" value="Alterar font" id="RemoverDiv1"/>
+<input type="button" value="Adiciona class" id="RemoverDiv2"/>
+<input type="button" value="Remove class" id="RemoverDiv3"/>
+
+
+</body>
+</html>
