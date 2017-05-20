@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            
+            function limpa_formulario_cep(){
+                $("#rua").val("");
+                $("#bairro").val("");
+                $("#cidade").val("");
+                $("#estado").val("");
+                $("#ibge").val("");
+            }
+            $("#cep").blur(function () {
+
+                var cep = $(this).val().replace(/\D/g, '');
+                if (cep != "") {
+                    var validacep = /^[0-9]{8}$/;
+                    if (validacep.test(cep)) {
+                        $("#rua").val("...");
+                        $("#bairro").val("...");
+                        $("#cidade").val("...");
+                        $("#estado").val("...");
+                        $("#ibge").val("...");
+                    }
+                    $.getJSON("//viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+                        if (!("erro" in dados)) {
+                            $("#rua").val(dados.logradouro);
+                            $("#bairro").val(dados.bairro);
+                            $("#cidade").val(dados.localidade);
+                            $("#estado").val(dados.uf);
+                            $("#ibge").val(dados.ibge);
+                        }
+                        else {
+                            limpa_formulario_cep();
+                            alert("CEP não encontrado.");
+                        }
+
+                    });
+                }
+                else {
+                    limpa_formulario_cep();
+                    alert("Digite o CEP");
+                }
+
+        });
+    });
+
+
+    </script>
+</head>
+<body>
+    <form method="get" action=".">
+        <label>
+            Cep:
+        <input name="cep" type="text" id="cep" value="" size="10" maxlength="8" /></label><br />
+        <label>
+            Rua:
+            <input name="rua" type="text" id="rua" value="" size="60" /></label><br />
+        <label>
+            Bairro:
+            <input name="bairro" type="text" id="bairro" value="" size="40" /></label><br />
+        <label>
+            Cidade:
+            <input name="cidade" type="text" id="cidade" size="40" /></label><br />
+        <label>
+            Estado:
+            <input name="estado" type="text" id="estado" size="2" /></label><br />
+        <label>
+            IBGE:
+            <input name="ibge" type="text" id="ibge" size="8" /></label><br />
+        
+
+        
+</form>
+</body>
+</html>
